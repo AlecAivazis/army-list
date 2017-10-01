@@ -9,8 +9,8 @@ import { CardPlaceholder } from ".."
 type Props = {
     style: number,
     children: React.Element<*>,
-    nCols: number,
-    padding: number,
+    nCols?: number,
+    padding?: number,
     unused: {}
 }
 
