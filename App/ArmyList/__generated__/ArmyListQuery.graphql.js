@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash cf01b74e9fde944d3234eebbf3fd917b
+ * @relayHash 06e49142ba29f0a1c89f4ac5b1909884
  */
 
 /* eslint-disable */
@@ -37,6 +37,7 @@ fragment ArmyList_armies on ArmyConnection {
 }
 
 fragment ArmyCard_army on Army {
+  id
   name
 }
 */
@@ -162,7 +163,7 @@ const batch /*: ConcreteBatch*/ = {
         ]
     },
     text:
-        "query ArmyListQuery {\n  viewer {\n    allArmies {\n      ...ArmyList_armies\n    }\n    id\n  }\n}\n\nfragment ArmyList_armies on ArmyConnection {\n  edges {\n    node {\n      ...ArmyCard_army\n      name\n      id\n    }\n  }\n}\n\nfragment ArmyCard_army on Army {\n  name\n}\n"
+        "query ArmyListQuery {\n  viewer {\n    allArmies {\n      ...ArmyList_armies\n    }\n    id\n  }\n}\n\nfragment ArmyList_armies on ArmyConnection {\n  edges {\n    node {\n      ...ArmyCard_army\n      name\n      id\n    }\n  }\n}\n\nfragment ArmyCard_army on Army {\n  id\n  name\n}\n"
 }
 
 module.exports = batch

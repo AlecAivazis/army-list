@@ -39,6 +39,7 @@ flow/
 
 [options]
 module.system=haste
+module.file_ext=.graphql.js
 
 emoji=true
 
