@@ -1,15 +1,15 @@
 // external imports
-import React from 'react'
-import { Text, StyleSheet } from 'react-native'
+import React from "react"
+import { Text, StyleSheet } from "react-native"
 
 const Title = ({ style, ...unused }) => (
-  <Text style={[style, styles.container]} {...unused} />
+    <Text style={[style, styles.container]} {...unused} />
 )
 
 const styles = StyleSheet.create({
-  container: {
-    fontSize: 18,
-  }
+    container: {
+        fontSize: 18
+    }
 })
 
 export default Title

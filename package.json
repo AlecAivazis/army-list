@@ -10,7 +10,7 @@
     "ios": "react-native-scripts ios",
     "flow": "flow",
     "flow:watch": "watchman-make -p 'App/**/*.js' -p 'components/**/*.js' -p 'quark/**/*.js' --make 'yarn run' -t flow",
-    "format": "prettier --write App/**/*.js components/**/*.js quark/**/*.js",
+    "format": "prettier --write '{,!(node_modules)/**/}*.js'",
     "test": "jest"
   },
   "jest": {
