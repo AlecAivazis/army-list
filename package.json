@@ -8,25 +8,37 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
+    "flow": "flow",
+    "flow:watch": "watchman-make -p 'App/**/*.js' -p 'components/**/*.js' -p 'quark/**/*.js' --make 'yarn run' -t flow",
+    "format": "prettier --write App/**/*.js components/**/*.js quark/**/*.js",
     "test": "jest"
   },
   "jest": {
     "preset": "jest-expo"
   },
+  "prettier": {
+    "tabWidth": 4,
+    "semi": false
+  },
   "dependencies": {
     "babel-plugin-root-import": "^5.1.0",
     "expo": "^21.0.0",
+    "flow": "^0.2.3",
     "jest": "^21.2.1",
     "jest-cli": "^21.2.1",
     "lodash": "^4.17.4",
-    "quark-native": "^0.0.9-beta.9",
+    "quark-native": "^0.0.9-beta.11",
     "react": "16.0.0-alpha.12",
     "react-native": "^0.48.4"
   },
   "devDependencies": {
+    "flow-bin": "0.49.1",
+    "git-hooks": "^1.1.8",
     "jest-expo": "^21.0.2",
+    "prettier": "^1.7.3",
     "react-native-scripts": "1.5.0",
     "react-test-renderer": "16.0.0-alpha.12",
-    "regenerator-runtime": "^0.11.0"
+    "regenerator-runtime": "^0.11.0",
+    "start": "^5.1.0"
   }
 }

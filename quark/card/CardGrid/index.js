@@ -5,22 +5,41 @@ import _ from 'lodash'
 // local imports
 import { CardPlaceholder } from '..'
 
-const CardGrid = ({style, children, nCols=3, ...unused}) => (
-  <ScrollView {...unused} style={[style, styles.container]}>
-    {_.chunk(children, nCols).map((row, i) => (
-      <View style={styles.row} key={`grid-row-${i}`}>
-        {row.map((child, i) => (
-          <View style={i === row.length - 1 ? styles.lastCard : styles.cardWrapper}>
-            {child}
-          </View>
-        ))}
-        {[...new Array(nCols - row.length)].map(() => (
-          <CardPlaceholder style={styles.cardWrapper}/>
-        ))}
-      </View>
-    ))}
-  </ScrollView>
-)
+const CardGrid = ({style, children, nCols=3, padding=40, ...unused}) => {
+  // the style for cards
+  const card = {
+    marginBottom: padding,
+    marginRight: padding,
+  }
+  // the style of the last card
+  const lastCard = {
+    marginBottom: padding
+  }
+
+  return (
+    <ScrollView {...unused} style={[style, styles.container]}>
+      {_.chunk(children, nCols).map((row, i) => (
+        <View style={styles.row} key={`row-${i}`}>
+          {row.map((child, i) => {
+            // the style to apply to the card
+            const cardStyle = i === row.length - 1 ? lastCard : card
+            return (
+              <View
+                style={[styles.card, cardStyle]}
+                key={`card-${i}`}
+              >
+                {child}
+              </View>
+            )
+          })}
+          {[...new Array(nCols - row.length)].map((_, i) => (
+            <CardPlaceholder style={styles.cardWrapper} key={`placeholder-${i}`}/>
+          ))}
+        </View>
+      ))}
+    </ScrollView>
+  )
+}
 
 
 const styles = StyleSheet.create({
@@ -38,9 +57,8 @@ const styles = StyleSheet.create({
     marginRight: 40,
     marginBottom: 40,
   },
-  lastCard: {
+  card: {
     flex: 1,
-    marginBottom: 40,
   }
 })
 

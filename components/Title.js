@@ -8,7 +8,7 @@ const Title = ({ style, ...unused }) => (
 
 const styles = StyleSheet.create({
   container: {
-    fontSize: 16,
+    fontSize: 18,
   }
 })
 
