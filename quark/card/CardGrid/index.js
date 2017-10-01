@@ -7,14 +7,20 @@ import _ from "lodash"
 import { CardPlaceholder } from ".."
 
 type Props = {
-  style: number,
-  children: React.Element<*>,
-  nCols: number,
-  padding: number,
-  unused: {},
+    style: number,
+    children: React.Element<*>,
+    nCols: number,
+    padding: number,
+    unused: {}
 }
 
-const CardGrid = ({ style, children, nCols = 3, padding = 40, ...unused } : Props) => {
+const CardGrid = ({
+    style,
+    children,
+    nCols = 3,
+    padding = 40,
+    ...unused
+}: Props) => {
     // the style for cards
     const card = {
         marginBottom: padding,

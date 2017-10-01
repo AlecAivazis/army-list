@@ -4,11 +4,11 @@ import React from "react"
 import { View, Text, StyleSheet } from "react-native"
 
 type Props = {
-  style: number,
-  unused: {},
+    style: number,
+    unused: {}
 }
 
-const CardPlaceholder = ({ style, ...unused } : Props) => (
+const CardPlaceholder = ({ style, ...unused }: Props) => (
     <View style={[styles.container, style]} />
 )
 
