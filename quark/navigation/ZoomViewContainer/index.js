@@ -42,7 +42,14 @@ class ZoomGridContainer extends React.Component<Props> {
     }
 
     render() {
+        // used props
         const { children, style, ...unused } = this.props
+        // the payload to pass the view
+        const viewPayload = {
+            data: this.state.data,
+            closeView: this._closeView,
+            openView: this._openView
+        }
         return (
             <View
                 style={[styles.container, style]}
@@ -56,18 +63,15 @@ class ZoomGridContainer extends React.Component<Props> {
                             height: this.state.modal.height,
                             top: this.state.modal.x,
                             left: this.state.modal.y,
-                            bottom: 0,
-                            right: 0,
                             display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
+                            flexDirection: "row",
                             position: "absolute",
                             backgroundColor: "white"
                         }}
                     >
                         {this.state.loading
-                            ? this.props.loading(this.state.data)
-                            : this.props.view(this.state.data)}
+                            ? this.props.loading(viewPayload)
+                            : this.props.view(viewPayload)}
                     </Animated.View>
                 )}
             </View>
@@ -124,28 +128,26 @@ class ZoomGridContainer extends React.Component<Props> {
     }
 
     _closeView: () => void = () => {
-        // we have a few things we need to animate at once
-        Animated.parallel([
-            Animated.timing(this.state.modal.width, {
-                toValue: this.state.origin.width,
-                duration: animationDuration
-            }),
-            Animated.timing(this.state.modal.height, {
-                toValue: this.state.origin.height,
-                duration: animationDuration
-            }),
-            Animated.timing(this.state.modal.x, {
-                toValue: this.state.origin.x,
-                duration: animationDuration
-            }),
-            Animated.timing(this.state.modal.y, {
-                toValue: this.state.origin.y,
-                duration: animationDuration
-            })
-        ]).start(() => {
-            this.setState({
-                showView: false
-            })
+        this.setState({ loading: true }, () => {
+            // we have a few things we need to animate at once
+            Animated.parallel([
+                Animated.timing(this.state.modal.width, {
+                    toValue: this.state.origin.width,
+                    duration: animationDuration
+                }),
+                Animated.timing(this.state.modal.height, {
+                    toValue: this.state.origin.height,
+                    duration: animationDuration
+                }),
+                Animated.timing(this.state.modal.x, {
+                    toValue: this.state.origin.x,
+                    duration: animationDuration
+                }),
+                Animated.timing(this.state.modal.y, {
+                    toValue: this.state.origin.y,
+                    duration: animationDuration
+                })
+            ]).start(() => this.setState({ showView: false }))
         })
     }
 

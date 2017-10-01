@@ -19,7 +19,9 @@ const List = ({ armies, ...unused }) => (
                 <Text>loading...</Text>
             </View>
         )}
-        view={({ id }: TransitionSpec) => <ArmyDetail id={id} />}
+        view={({ data: { id }, closeView }) => (
+            <ArmyDetail id={id} closeView={closeView} />
+        )}
     >
         {transitionTo => (
             <CardGrid style={styles.content}>

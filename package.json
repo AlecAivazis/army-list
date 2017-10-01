@@ -14,7 +14,7 @@
     "test": "jest",
     "build:schema": "graphql get-schema graphcool",
     "graphcool": "graphcool",
-    "relay": "relay-compiler --src ./App --schema ./schema.graphql"
+    "relay": "relay-compiler --src . --schema ./schema.graphql"
   },
   "jest": {
     "preset": "jest-expo"

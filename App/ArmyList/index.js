@@ -8,6 +8,7 @@ import { grey2 } from "quark-native/styles"
 import { AppBar, Title } from "~/components"
 import List from "./ArmyList"
 import environment from "~/App/environment"
+import { Loader } from "~/quark"
 
 export default () => (
     <View style={styles.container}>
@@ -33,7 +34,7 @@ export default () => (
                 }
                 // if we are still loading
                 if (!props) {
-                    return <Text>loading...</Text>
+                    return <Loader name="spinner" />
                 }
 
                 // we're done querying the api

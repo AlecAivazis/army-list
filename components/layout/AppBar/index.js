@@ -4,6 +4,8 @@ import { AppBar } from "quark-native"
 import { Route, Switch } from "react-router-native"
 import { Text } from "react-native"
 import Title from "../../Title"
+// local imports
+import ArmyDetailAppBar from "./ArmyDetailAppBar"
 
 export default ({ style, ...unused }) => (
     <AppBar
@@ -14,7 +16,9 @@ export default ({ style, ...unused }) => (
         <Switch>
             <Route
                 path="/army/:id"
-                render={() => <Title style={styles.title}>Foo</Title>}
+                render={({ match }) => (
+                    <ArmyDetailAppBar id={match.params.id} />
+                )}
             />
             <Route
                 render={() => <Title style={styles.title}>My Armies</Title>}
