@@ -31,7 +31,8 @@ const styles = {
     container: {
         backgroundColor: "#252528",
         height: 80,
-        paddingLeft: 55
+        paddingLeft: 55,
+        paddingRight: 55
     },
     statusBar: {
         backgroundColor: "#0E0E0F",
