@@ -13,7 +13,7 @@ const Overlay = ({ toggle, children }) => (
                         marginRight: "auto",
                         marginTop: 50,
                         width: 400,
-                        height: 500
+                        height: 500,
                         backgroundColor: "white"
                     }}
                 >
