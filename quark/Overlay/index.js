@@ -4,7 +4,6 @@ import { Modal, TouchableWithoutFeedback, View } from "react-native"
 
 const Overlay = ({ toggle, children }) => (
     <Modal>
-        {console.log("mounting overlay")}
         {/* the click away */}
         <TouchableWithoutFeedback onPress={toggle}>
             <View style={{ backgroundColor: "white", flex: 1 }}>

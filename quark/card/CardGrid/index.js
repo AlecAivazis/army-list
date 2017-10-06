@@ -4,7 +4,7 @@ import React from "react"
 import { ScrollView, View, StyleSheet } from "react-native"
 import _ from "lodash"
 // local imports
-import { CardPlaceholder } from ".."
+import CardPlaceholder from "./Placeholder"
 
 type Props = {
     style: number,

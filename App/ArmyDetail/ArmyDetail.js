@@ -6,29 +6,34 @@ import { Button } from "quark-native"
 import { Route } from "react-router-native"
 import { withRouter } from "react-router-native"
 import { App, Title } from "~/components"
+import { Boolean as BooleanState } from "quark-native"
 // local imports
 import ArmyDetailHeader from "./ArmyDetailHeader"
+import OptionsMenu from "./OptionsMenu"
 
 type Props = {
     unused: {}
 }
 
 const ArmyDetail = ({ army, ...unused }: Props) => (
-    <App header={<ArmyDetailHeader army={army} />}>
-        <View style={styles.content}>
-            <View style={styles.header}>
-                <Text>{army.name}</Text>
-            </View>
-            <Route
-                path="/armies/:id/edit"
-                render={() => (
-                    <View style={styles.body}>
-                        <Text>hello</Text>
-                    </View>
-                )}
-            />
-        </View>
-    </App>
+    <BooleanState>
+        {({ state, toggle }) => (
+            <App
+                header={
+                    <ArmyDetailHeader
+                        army={army}
+                        toggleMenu={toggle}
+                        style={styles.content}
+                    />
+                }
+            >
+                <View style={styles.header}>
+                    <Text>{army.name}</Text>
+                </View>
+                <OptionsMenu visible={state} />
+            </App>
+        )}
+    </BooleanState>
 )
 
 const styles = StyleSheet.create({
@@ -36,12 +41,13 @@ const styles = StyleSheet.create({
     content: {
         flex: 1,
         flexDirection: "column",
-        justifyContent: "space-between"
+        justifyContent: "flex-start",
+        alignItems: "flex-start"
     },
     header: {
-        display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between"
+        justifyContent: "center",
+        flex: 1
     },
     body: {
         flex: 1

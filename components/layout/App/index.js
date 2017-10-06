@@ -9,13 +9,13 @@ import { Title, AppBar } from "~/components"
 import environment from "~/App/environment"
 import { Loader } from "~/quark"
 
-export default ({ children, header }) => (
+export default ({ children, header, style }) => (
     <View style={styles.container}>
         <AppBar style={styles.appBar}>
             <StatusBar backgroundColor="black" />
             <View style={styles.title}>{header}</View>
         </AppBar>
-        <View style={styles.content}>{children}</View>
+        <View style={[styles.content, style]}>{children}</View>
     </View>
 )
 
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: "center",
+        width: "100%",
         paddingTop: 20
     },
     title: {
