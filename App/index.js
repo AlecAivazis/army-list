@@ -3,8 +3,7 @@ import React from "react"
 import { View } from "react-native"
 import { NativeRouter, Route, Switch, Redirect } from "react-router-native"
 // local imports
-import ArmyList from "./ArmyList"
-import ArmyDetail from "./ArmyDetail"
+import { ArmyList, ArmyDetail } from "./views"
 
 const App = () => (
     <NativeRouter>

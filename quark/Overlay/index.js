@@ -6,13 +6,14 @@ const Overlay = ({ toggle, children }) => (
     <Modal>
         {/* the click away */}
         <TouchableWithoutFeedback onPress={toggle}>
-            <View style={{ backgroundColor: "white", flex: 1 }}>
+            <View style={{ backgroundColor: "red", flex: 1 }}>
                 <View
                     style={{
                         marginLeft: "auto",
                         marginRight: "auto",
                         marginTop: 50,
                         width: 400,
+                        height: 500
                         backgroundColor: "white"
                     }}
                 >

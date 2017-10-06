@@ -17,13 +17,15 @@ class OptionsMenu extends React.PureComponent {
 
     // start the opacity animation
     _showMenu = () =>
-        Animated.spring(this.state.opacity, {
-            toValue: 1
+        Animated.timing(this.state.opacity, {
+            toValue: 1,
+            duration: 100
         }).start()
 
     _hideMenu = () =>
-        Animated.spring(this.state.opacity, {
-            toValue: 0
+        Animated.timing(this.state.opacity, {
+            toValue: 0,
+            duration: 100
         }).start()
 
     componentWillReceiveProps({ visible }: { visible: boolean }) {

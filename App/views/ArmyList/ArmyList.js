@@ -7,7 +7,6 @@ import { ZoomViewContainer, CardGrid } from "~/quark"
 import { WhitePortal } from "react-native-portal"
 import { Redirect } from "react-router-native"
 // local imports
-import ArmyDetail from "~/App/ArmyDetail"
 import ArmyCard from "./ArmyCard"
 
 type TransitionSpec = {
