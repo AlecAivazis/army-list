@@ -5141,6 +5141,10 @@ minimist@^1.1.0, minimist@^1.1.1, minimist@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
 
+mitt@*:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/mitt/-/mitt-1.1.2.tgz#380e61480d6a615b660f07abb60d51e0a4e4bed6"
+
 mixin-deep@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/mixin-deep/-/mixin-deep-1.2.0.tgz#d02b8c6f8b6d4b8f5982d3fd009c4919851c3fe2"
@@ -6170,6 +6174,12 @@ react-native-gesture-handler@1.0.0-alpha.22:
 react-native-maps@0.15.3:
   version "0.15.3"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.15.3.tgz#5d9e0a8e30ecc51dc755b7a3b9d6b6ed5e2dd08c"
+
+react-native-portal@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-portal/-/react-native-portal-1.2.1.tgz#58c5b9bd9340a9b65702470811521cb1244c3dcd"
+  dependencies:
+    mitt "*"
 
 react-native-safe-module@^1.1.0:
   version "1.2.0"

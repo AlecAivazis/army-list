@@ -6,6 +6,7 @@ import { QueryRenderer, graphql } from "react-relay"
 // local imports
 import environment from "~/App/environment"
 import ArmyDetailContent from "./ArmyDetail"
+import { App } from "~/components"
 
 type Props = {
     id: string,
@@ -13,14 +14,6 @@ type Props = {
 }
 
 class ArmyDetail extends React.Component<Props> {
-    componentDidMount() {
-        this.props.history.push(`/army/${this.props.id}`)
-    }
-
-    componentWillUnmount() {
-        this.props.history.push("/armies/")
-    }
-
     render() {
         return (
             <QueryRenderer
@@ -44,7 +37,11 @@ class ArmyDetail extends React.Component<Props> {
                     }
                     // if we are still loading
                     if (!props) {
-                        return <Text>loading...</Text>
+                        return (
+                            <App>
+                                <Text>loading...</Text>
+                            </App>
+                        )
                     }
 
                     // we've finished querying for the specific army

@@ -1,12 +1,23 @@
 // external imports
 import React from "react"
-import { NativeRouter } from "react-router-native"
+import { View } from "react-native"
+import { NativeRouter, Route, Switch, Redirect } from "react-router-native"
 // local imports
 import ArmyList from "./ArmyList"
+import ArmyDetail from "./ArmyDetail"
 
 const App = () => (
     <NativeRouter>
-        <ArmyList />
+        <View style={{ width: "100%", height: "100%", display: "flex" }}>
+            <Switch>
+                <Route exact path="/armies" render={() => <ArmyList />} />
+                <Route
+                    path="/armies/:id"
+                    render={({ match }) => <ArmyDetail id={match.params.id} />}
+                />
+                <Route>{() => <Redirect to="/armies" />}</Route>
+            </Switch>
+        </View>
     </NativeRouter>
 )
 

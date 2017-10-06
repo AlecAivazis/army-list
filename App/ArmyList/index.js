@@ -5,17 +5,16 @@ import { QueryRenderer, graphql } from "react-relay"
 import { Card } from "quark-native"
 import { grey2 } from "quark-native/styles"
 // local imports
-import { AppBar, Title } from "~/components"
+import { App, Title } from "~/components"
 import List from "./ArmyList"
 import environment from "~/App/environment"
 import { Loader } from "~/quark"
 
 export default () => (
-    <View style={styles.container}>
-        <AppBar style={styles.appBar}>
-            <StatusBar backgroundColor="black" />
-            <Title style={{ color: "white" }}>My Armies</Title>
-        </AppBar>
+    <App
+        style={styles.container}
+        header={<Title style={{ color: "white" }}>My Armies</Title>}
+    >
         <QueryRenderer
             environment={environment}
             query={graphql`
@@ -41,7 +40,7 @@ export default () => (
                 return <List armies={props.viewer.allArmies} />
             }}
         />
-    </View>
+    </App>
 )
 
 const styles = StyleSheet.create({

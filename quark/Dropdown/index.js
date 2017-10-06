@@ -91,28 +91,28 @@ class Dropdown extends React.Component<Props> {
                     <TouchableWithoutFeedback onPress={this._toggle}>
                         <View style={{ flex: 1 }} />
                     </TouchableWithoutFeedback>
-                    <Animated.View
-                        style={[
-                            {
-                                position: "absolute",
-                                width: 275,
-                                height: 100,
-                                transform: [
-                                    { translateY: this.state.dropdown.y },
-                                    { translateX: this.state.dropdown.x }
-                                ]
-                            },
-                            {
-                                opacity: this.state.dropdown.opacity
-                            }
-                        ]}
-                    >
-                        <View style={{ flex: 1 }} pointerEvents="none">
-                            <Card style={{ flex: 1 }}>
-                                <Text>hello</Text>
-                            </Card>
-                        </View>
-                    </Animated.View>
+                    <TouchableWithoutFeedback onPress={this._toggle}>
+                        <Animated.View
+                            style={[
+                                {
+                                    position: "absolute",
+                                    width: 250,
+                                    height: 100,
+                                    transform: [
+                                        { translateY: this.state.dropdown.y },
+                                        { translateX: this.state.dropdown.x }
+                                    ]
+                                },
+                                {
+                                    opacity: this.state.dropdown.opacity
+                                }
+                            ]}
+                        >
+                            <View style={{ flex: 1 }}>
+                                <Card style={{ flex: 1 }}>{children}</Card>
+                            </View>
+                        </Animated.View>
+                    </TouchableWithoutFeedback>
                 </Modal>
             </View>
         )

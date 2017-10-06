@@ -35,7 +35,7 @@ const CardGrid = ({
     const cards = React.Children.toArray(children)
 
     return (
-        <ScrollView {...unused} style={[style, styles.container]}>
+        <ScrollView {...unused} style={[styles.container, style]}>
             {_.chunk(cards, nCols).map((row, i) => (
                 <View style={styles.row} key={`row-${i}`}>
                     {row.map((child, i) => {

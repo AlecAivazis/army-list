@@ -3,36 +3,36 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { View, Text, StyleSheet } from "react-native"
 import { Button } from "quark-native"
+import { Route } from "react-router-native"
+import { withRouter } from "react-router-native"
+import { App, Title } from "~/components"
+// local imports
+import ArmyDetailHeader from "./ArmyDetailHeader"
 
 type Props = {
-    close: () => void,
     unused: {}
 }
 
-const ArmyDetail = ({ army, close, ...unused }: Props) => (
-    <View style={styles.container}>
+const ArmyDetail = ({ army, ...unused }: Props) => (
+    <App header={<ArmyDetailHeader army={army} />}>
         <View style={styles.content}>
             <View style={styles.header}>
                 <Text>{army.name}</Text>
-                <Button onPressOut={close}>
-                    <Text>close</Text>
-                </Button>
             </View>
-            <View style={styles.body}>
-                <Text>hello</Text>
-            </View>
+            <Route
+                path="/armies/:id/edit"
+                render={() => (
+                    <View style={styles.body}>
+                        <Text>hello</Text>
+                    </View>
+                )}
+            />
         </View>
-    </View>
+    </App>
 )
 
 const styles = StyleSheet.create({
-    container: {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0
-    },
+    container: {},
     content: {
         flex: 1,
         flexDirection: "column",
@@ -49,10 +49,11 @@ const styles = StyleSheet.create({
 })
 
 export default createFragmentContainer(
-    ArmyDetail,
+    withRouter(ArmyDetail),
     graphql`
         fragment ArmyDetail_army on Army {
             name
+            ...ArmyDetailHeader_army
         }
     `
 )

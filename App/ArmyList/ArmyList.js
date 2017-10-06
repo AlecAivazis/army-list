@@ -4,6 +4,8 @@ import React from "react"
 import { View, StyleSheet, Text } from "react-native"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ZoomViewContainer, CardGrid } from "~/quark"
+import { WhitePortal } from "react-native-portal"
+import { Redirect } from "react-router-native"
 // local imports
 import ArmyDetail from "~/App/ArmyDetail"
 import ArmyCard from "./ArmyCard"
@@ -20,11 +22,11 @@ const List = ({ armies, ...unused }) => (
             </View>
         )}
         view={({ data: { id }, closeView }) => (
-            <ArmyDetail id={id} closeView={closeView} />
+            <Redirect to={`/armies/${id}`} />
         )}
     >
         {transitionTo => (
-            <CardGrid style={styles.content}>
+            <CardGrid style={styles.container}>
                 {armies.edges.map(({ node: army }) => (
                     <ArmyCard
                         key={army.name}
@@ -38,7 +40,9 @@ const List = ({ armies, ...unused }) => (
 )
 
 const styles = StyleSheet.create({
-    container: {}
+    container: {
+        flex: 1
+    }
 })
 
 export default createFragmentContainer(
