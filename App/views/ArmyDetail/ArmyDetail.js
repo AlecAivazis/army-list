@@ -1,7 +1,7 @@
 // external imports
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { View, Text, StyleSheet } from "react-native"
+import { View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native"
 import { Button } from "quark-native"
 import { Route } from "react-router-native"
 import { withRouter } from "react-router-native"
@@ -17,19 +17,22 @@ type Props = {
 
 const ArmyDetail = ({ army, ...unused }: Props) => (
     <BooleanState>
-        {({ state, toggle }) => (
+        {({ state, toggle, set }) => (
             <App
                 header={
                     <ArmyDetailHeader
                         army={army}
                         toggleMenu={toggle}
+                        closeMenu={() => set(false)}
                         style={styles.content}
                     />
                 }
             >
-                <View style={styles.header}>
-                    <Text>{army.name}</Text>
-                </View>
+                <TouchableWithoutFeedback onPress={() => set(false)}>
+                    <View style={styles.header}>
+                        <Text>{army.name}</Text>
+                    </View>
+                </TouchableWithoutFeedback>
                 <OptionsMenu visible={state} />
             </App>
         )}

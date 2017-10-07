@@ -1,7 +1,7 @@
 // @flow
 // external imports
 import React from "react"
-import { Animated } from "react-native"
+import { Animated, TouchableWithoutFeedback } from "react-native"
 import { Button, Card } from "quark-native"
 // local imports
 import styles from "./styles"
@@ -42,15 +42,17 @@ class OptionsMenu extends React.PureComponent {
     }
 
     render = () => (
-        <Animated.View
-            style={[{ opacity: this.state.opacity }, styles.container]}
-        >
-            <Card style={{ flex: 1 }}>
-                <Button style={styles.button}>hello</Button>
-                <Button style={styles.button}>hello</Button>
-                <Button style={styles.lastButton}>hello</Button>
-            </Card>
-        </Animated.View>
+        <TouchableWithoutFeedback>
+            <Animated.View
+                style={[{ opacity: this.state.opacity }, styles.container]}
+            >
+                <Card style={{ flex: 1 }}>
+                    <Button style={styles.button}>hello</Button>
+                    <Button style={styles.button}>hello</Button>
+                    <Button style={styles.lastButton}>hello</Button>
+                </Card>
+            </Animated.View>
+        </TouchableWithoutFeedback>
     )
 }
 
