@@ -4,7 +4,10 @@ import { StyleSheet } from 'react-native'
 import { grey2 } from 'quark-native/styles'
 
 const button = {
-    height: 40
+    height: 48,
+    alignItems: 'flex-start',
+    paddingLeft: 12,
+    paddingRight: 12
 }
 
 export default StyleSheet.create({

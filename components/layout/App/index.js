@@ -15,10 +15,10 @@ import { Title, AppBar } from '~/components'
 import environment from '~/App/environment'
 import { Loader } from '~/quark'
 
-export default ({ children, header, style, onPress }) => (
-    <TouchableWithoutFeedback onPress={onPress}>
+export default ({ children, header, onPress, style }) => (
+    <TouchableWithoutFeedback onPressIn={onPress}>
         <View style={styles.container}>
-            <AppBar style={styles.appBar} onPress={onPress}>
+            <AppBar style={styles.appBar}>
                 <StatusBar backgroundColor="black" />
                 <View style={styles.title}>{header}</View>
             </AppBar>
