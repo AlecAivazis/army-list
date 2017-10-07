@@ -1,10 +1,10 @@
 // @flow
 // external imports
-import React from "react"
-import { Animated, TouchableWithoutFeedback } from "react-native"
-import { Button, Card } from "quark-native"
+import React from 'react'
+import { Animated, TouchableWithoutFeedback } from 'react-native'
+import { Button, Card } from 'quark-native'
 // local imports
-import styles from "./styles"
+import styles from './styles'
 
 class OptionsMenu extends React.PureComponent {
     state: {

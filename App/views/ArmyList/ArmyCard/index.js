@@ -1,11 +1,11 @@
 // external imports
-import React from "react"
-import { Text, StyleSheet } from "react-native"
-import { createFragmentContainer, graphql } from "react-relay"
-import { Card, Button } from "quark-native"
-import { ZoomViewTrigger } from "~/quark"
+import React from 'react'
+import { Text, StyleSheet } from 'react-native'
+import { createFragmentContainer, graphql } from 'react-relay'
+import { Card, Button } from 'quark-native'
+import { ZoomViewTrigger } from '~/quark'
 // local imports
-import type { ArmyCard_army } from "./__generated__/ArmyCard_army.graphql"
+import type { ArmyCard_army } from './__generated__/ArmyCard_army.graphql'
 
 type Props = {
     transitionTo: (spec: TransitionSpec) => void,
@@ -32,9 +32,9 @@ const styles = StyleSheet.create({
     container: {
         height: 200,
         maxWidth: 400,
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "flex-start"
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start'
     }
 })
 

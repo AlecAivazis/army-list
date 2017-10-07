@@ -1,6 +1,6 @@
 // external imports
-import React from "react"
-import { G, Circle as SvgCircle, Svg } from "react-native-svg"
+import React from 'react'
+import { G, Circle as SvgCircle, Svg } from 'react-native-svg'
 
 const Circle = ({ ...unused }) => <SvgCircle fill="white" {...unused} />
 

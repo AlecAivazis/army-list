@@ -1,10 +1,10 @@
 // @flow
 // external imports
-import React from "react"
-import { ScrollView, View, StyleSheet } from "react-native"
-import _ from "lodash"
+import React from 'react'
+import { ScrollView, View, StyleSheet } from 'react-native'
+import _ from 'lodash'
 // local imports
-import CardPlaceholder from "./Placeholder"
+import CardPlaceholder from './Placeholder'
 
 type Props = {
     style: number,
@@ -64,13 +64,13 @@ const CardGrid = ({
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#F9F9F9",
+        backgroundColor: '#F9F9F9',
         padding: 40
     },
     row: {
         flex: 1,
-        flexDirection: "row",
-        justifyContent: "space-around"
+        flexDirection: 'row',
+        justifyContent: 'space-around'
     },
     cardWrapper: {
         flex: 1,

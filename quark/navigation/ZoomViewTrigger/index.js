@@ -1,6 +1,6 @@
 // external imports
-import React from "react"
-import { View } from "react-native"
+import React from 'react'
+import { View } from 'react-native'
 
 type Props = {
     transitionTo: (data: any) => void,

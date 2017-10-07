@@ -1,7 +1,7 @@
 // @flow
 // external imports
-import React from "react"
-import { StyleSheet, View, Text, Animated } from "react-native"
+import React from 'react'
+import { StyleSheet, View, Text, Animated } from 'react-native'
 
 type BoundingBox = {
     x: number,
@@ -63,10 +63,10 @@ class ZoomGridContainer extends React.Component<Props> {
                             height: this.state.modal.height,
                             top: this.state.modal.x,
                             left: this.state.modal.y,
-                            display: "flex",
-                            flexDirection: "row",
-                            position: "absolute",
-                            backgroundColor: "white"
+                            display: 'flex',
+                            flexDirection: 'row',
+                            position: 'absolute',
+                            backgroundColor: 'white'
                         }}
                     >
                         {this.state.loading
@@ -169,7 +169,7 @@ class ZoomGridContainer extends React.Component<Props> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        position: "relative"
+        position: 'relative'
     }
 })
 

@@ -1,11 +1,11 @@
 // external imports
-import React from "react"
-import { Text } from "react-native"
+import React from 'react'
+import { Text } from 'react-native'
 // local imports
-import CardGrid from "./"
-import { Card } from "quark-core/components/card"
+import CardGrid from './'
+import { Card } from 'quark-core/components/card'
 
-import renderer from "react-test-renderer"
+import renderer from 'react-test-renderer'
 
 // the subject of our test
 const Subject = ({ ...unused }) => (
@@ -28,12 +28,12 @@ const Subject = ({ ...unused }) => (
     </CardGrid>
 )
 
-it("defaults to 3 columns", () => {
+it('defaults to 3 columns', () => {
     const rendered = renderer.create(<Subject />).toJSON()
     expect(rendered).toMatchSnapshot()
 })
 
-it("supports specifying number of columns", () => {
+it('supports specifying number of columns', () => {
     const rendered = renderer.create(<Subject nCols={2} />).toJson()
     expect(rendered).toMatchSnapshot()
 })

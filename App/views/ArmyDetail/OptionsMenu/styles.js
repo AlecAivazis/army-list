@@ -1,7 +1,7 @@
 // external imports
-import { StyleSheet } from "react-native"
+import { StyleSheet } from 'react-native'
 // local imports
-import { grey2 } from "quark-native/styles"
+import { grey2 } from 'quark-native/styles'
 
 const button = {
     height: 40
@@ -9,7 +9,7 @@ const button = {
 
 export default StyleSheet.create({
     container: {
-        position: "absolute",
+        position: 'absolute',
         right: 0,
         top: 0,
         width: 243,
@@ -17,7 +17,7 @@ export default StyleSheet.create({
     },
     button: {
         ...button,
-        borderStyle: "solid",
+        borderStyle: 'solid',
         borderBottomWidth: 1,
         borderBottomColor: grey2
     },

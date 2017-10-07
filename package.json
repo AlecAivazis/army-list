@@ -21,7 +21,8 @@
   },
   "prettier": {
     "tabWidth": 4,
-    "semi": false
+    "semi": false,
+    "singleQuote": true
   },
   "dependencies": {
     "babel-plugin-root-import": "^5.1.0",
@@ -32,7 +33,7 @@
     "jest": "^21.2.1",
     "jest-cli": "^21.2.1",
     "lodash": "^4.17.4",
-    "quark-native": "^0.0.9-beta.11",
+    "quark-native": "^0.0.9-beta.12",
     "react": "16.0.0-alpha.12",
     "react-native": "^0.48.4",
     "react-native-portal": "^1.2.1",

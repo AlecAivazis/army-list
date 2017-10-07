@@ -1,12 +1,12 @@
 // external imports
-import React from "react"
-import { View, Text, StyleSheet } from "react-native"
-import { withRouter } from "react-router-native"
-import { QueryRenderer, graphql } from "react-relay"
+import React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+import { withRouter } from 'react-router-native'
+import { QueryRenderer, graphql } from 'react-relay'
 // local imports
-import environment from "~/App/environment"
-import ArmyDetailContent from "./ArmyDetail"
-import { App } from "~/components"
+import environment from '~/App/environment'
+import ArmyDetailContent from './ArmyDetail'
+import { App } from '~/components'
 
 type Props = {
     id: string,
@@ -59,9 +59,9 @@ class ArmyDetail extends React.Component<Props> {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "white",
-        justifyContent: "center",
-        alignItems: "center"
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })
 
