@@ -47,9 +47,9 @@ class OptionsMenu extends React.PureComponent {
                 style={[{ opacity: this.state.opacity }, styles.container]}
             >
                 <Card style={{ flex: 1 }}>
-                    <Button style={styles.button}>hello</Button>
-                    <Button style={styles.button}>hello</Button>
-                    <Button style={styles.lastButton}>hello</Button>
+                    <Button style={styles.button}>Add Detachment</Button>
+                    <Button style={styles.button}>Edit Army</Button>
+                    <Button style={styles.lastButton}>Delete Army</Button>
                 </Card>
             </Animated.View>
         </TouchableWithoutFeedback>

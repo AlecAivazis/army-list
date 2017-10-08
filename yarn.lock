@@ -6033,7 +6033,7 @@ quark-core@^0.0.9-beta.12:
   version "0.0.9-beta.12"
   resolved "https://registry.yarnpkg.com/quark-core/-/quark-core-0.0.9-beta.12.tgz#0b32a03ca75be16c9969f1170346db540868f269"
 
-quark-native@0.0.9-beta.12:
+quark-native@^0.0.9-beta.12:
   version "0.0.9-beta.12"
   resolved "https://registry.yarnpkg.com/quark-native/-/quark-native-0.0.9-beta.12.tgz#e729531893d821b2ef5d61836aacc6b0499ef7bc"
   dependencies:
