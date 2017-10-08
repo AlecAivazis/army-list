@@ -16,7 +16,6 @@ export default StyleSheet.create({
         right: 0,
         top: 80,
         width: 243,
-        height: 127,
         zIndex: 10
     },
     button: {

@@ -46,7 +46,16 @@ class OptionsMenu extends React.PureComponent {
             <Animated.View
                 style={[{ opacity: this.state.opacity }, styles.container]}
             >
-                <Card style={{ flex: 1 }}>{this.props.children}</Card>
+                <Card style={{ flex: 1 }}>
+                    {React.Children.map(this.props.children, (child, i) =>
+                        React.cloneElement(child, {
+                            style:
+                                i < this.props.children.length
+                                    ? styles.button
+                                    : styles.lastButton
+                        })
+                    )}
+                </Card>
             </Animated.View>
         </TouchableWithoutFeedback>
     )
