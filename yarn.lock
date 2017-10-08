@@ -6029,15 +6029,15 @@ qs@~6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
 
-quark-core@^0.0.9-beta.12:
-  version "0.0.9-beta.12"
-  resolved "https://registry.yarnpkg.com/quark-core/-/quark-core-0.0.9-beta.12.tgz#0b32a03ca75be16c9969f1170346db540868f269"
+quark-core@^0.0.9-beta.13:
+  version "0.0.9-beta.13"
+  resolved "https://registry.yarnpkg.com/quark-core/-/quark-core-0.0.9-beta.13.tgz#d39768a0b4e4972af47206292c476e4848250d5f"
 
-quark-native@^0.0.9-beta.12:
-  version "0.0.9-beta.12"
-  resolved "https://registry.yarnpkg.com/quark-native/-/quark-native-0.0.9-beta.12.tgz#e729531893d821b2ef5d61836aacc6b0499ef7bc"
+quark-native@^0.0.9-beta.13:
+  version "0.0.9-beta.13"
+  resolved "https://registry.yarnpkg.com/quark-native/-/quark-native-0.0.9-beta.13.tgz#630d50ac5875905386c9438828f836c520912146"
   dependencies:
-    quark-core "^0.0.9-beta.12"
+    quark-core "^0.0.9-beta.13"
 
 querystring@0.2.0, querystring@^0.2.0:
   version "0.2.0"

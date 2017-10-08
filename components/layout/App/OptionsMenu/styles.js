@@ -14,9 +14,10 @@ export default StyleSheet.create({
     container: {
         position: 'absolute',
         right: 0,
-        top: 0,
+        top: 80,
         width: 243,
-        height: 127
+        height: 127,
+        zIndex: 10
     },
     button: {
         ...button,

@@ -9,15 +9,6 @@ import { Title, Icon } from '~/components'
 const ArmyDetailHeader = ({ army, toggleMenu, ...unused }) => (
     <View style={styles.container}>
         <Title>{army.name}</Title>
-        <Button
-            defaultColor="#252528"
-            activeColor="#1b1b1b"
-            textColor="white"
-            style={styles.button}
-            onPress={toggleMenu}
-        >
-            <Icon name="" />
-        </Button>
     </View>
 )
 

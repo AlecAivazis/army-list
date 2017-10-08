@@ -2,39 +2,52 @@
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native'
-import { Button } from 'quark-native'
 import { Route } from 'react-router-native'
 import { withRouter } from 'react-router-native'
 import { App, Title } from '~/components'
-import { Boolean as BooleanState } from 'quark-native'
+import { FreeState, Button } from 'quark-native'
 // local imports
 import ArmyDetailHeader from './ArmyDetailHeader'
-import OptionsMenu from './OptionsMenu'
 
 type Props = {
     unused: {}
 }
 
 const ArmyDetail = ({ army, ...unused }: Props) => (
-    <BooleanState>
-        {({ state, toggle, set }) => (
-            <App
-                onPress={() => set(false)}
-                header={
-                    <ArmyDetailHeader
-                        army={army}
-                        toggleMenu={toggle}
-                        style={styles.content}
-                    />
-                }
-            >
-                <View style={styles.header}>
-                    <Text>{army.name}</Text>
-                </View>
-                <OptionsMenu visible={state} />
-            </App>
-        )}
-    </BooleanState>
+    <FreeState>
+        {({ state, set }) => {
+            // a function to close the overlay
+            const closeOverlay = () => set(null)
+            // open a particular overlay
+            const openOverlay = which => () => set(which)
+
+            return (
+                <App
+                    header={
+                        <ArmyDetailHeader army={army} style={styles.content} />
+                    }
+                    options={[
+                        <Button
+                            onPress={openOverlay('detachment')}
+                            key="addDetachment"
+                        >
+                            Add Detachment
+                        </Button>,
+                        <Button onPress={openOverlay('edit')} key="edit">
+                            Edit Army
+                        </Button>,
+                        <Button onPress={openOverlay('delete')} key="delete">
+                            Delete Army
+                        </Button>
+                    ]}
+                >
+                    <View style={styles.header}>
+                        <Text>{army.name}</Text>
+                    </View>
+                </App>
+            )
+        }}
+    </FreeState>
 )
 
 const styles = StyleSheet.create({

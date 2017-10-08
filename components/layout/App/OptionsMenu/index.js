@@ -46,11 +46,7 @@ class OptionsMenu extends React.PureComponent {
             <Animated.View
                 style={[{ opacity: this.state.opacity }, styles.container]}
             >
-                <Card style={{ flex: 1 }}>
-                    <Button style={styles.button}>Add Detachment</Button>
-                    <Button style={styles.button}>Edit Army</Button>
-                    <Button style={styles.lastButton}>Delete Army</Button>
-                </Card>
+                <Card style={{ flex: 1 }}>{this.props.children}</Card>
             </Animated.View>
         </TouchableWithoutFeedback>
     )
