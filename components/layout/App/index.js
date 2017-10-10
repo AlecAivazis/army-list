@@ -16,10 +16,14 @@ import environment from '~/App/environment'
 import OptionsMenu from './OptionsMenu'
 import { Loader } from '~/quark'
 
-const App = ({ children, header, options, style }) => {
+const App = ({ children, header, button, options, style }) => {
     const content = ({ toggle, menuVisible }) => (
         <View style={styles.container}>
-            <AppBar style={styles.appBar} onPress={options && toggle}>
+            <AppBar
+                style={styles.appBar}
+                onPress={options && toggle}
+                button={button}
+            >
                 <StatusBar backgroundColor="black" />
                 <View style={styles.title}>{header}</View>
             </AppBar>
@@ -30,13 +34,13 @@ const App = ({ children, header, options, style }) => {
 
     return (
         <BooleanState>
-            {({ state: menuVisible, toggle }) => {
+            {({ state: menuVisible, toggle, set }) => {
                 const body = content({ toggle, menuVisible })
 
                 return !options ? (
                     body
                 ) : (
-                    <TouchableWithoutFeedback onPressIn={toggle}>
+                    <TouchableWithoutFeedback onPressIn={() => set(false)}>
                         {body}
                     </TouchableWithoutFeedback>
                 )
@@ -53,7 +57,7 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 1,
-        backgroundColor: grey2
+        backgroundColor: '#F9F9F9'
     },
     appBar: {
         flexDirection: 'row',
@@ -65,7 +69,7 @@ const styles = StyleSheet.create({
     title: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'flex-start'
     }
 })
 

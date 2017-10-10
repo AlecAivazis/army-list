@@ -3,7 +3,7 @@ import React from 'react'
 import { View } from 'react-native'
 import { NativeRouter, Route, Switch, Redirect } from 'react-router-native'
 // local imports
-import { ArmyList, ArmyDetail } from './views'
+import { ArmyList, ArmyDetail, ManageData } from './views'
 
 const App = () => (
     <NativeRouter>
@@ -14,6 +14,7 @@ const App = () => (
                     path="/armies/:id"
                     render={({ match }) => <ArmyDetail id={match.params.id} />}
                 />
+                <Route exact path="/manage" render={() => <ManageData />} />
                 <Route>{() => <Redirect to="/armies" />}</Route>
             </Switch>
         </View>

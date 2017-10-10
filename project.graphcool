@@ -1,0 +1,145 @@
+# project: cj8l908cf02iu0137rfa3wnqq
+# version: 4
+
+type Army implements Node {
+  id: ID! @isUnique
+  name: String!
+  detachments: [ArmyDetachment!]! @relation(name: "ArmyOnArmyDetachment")
+}
+
+type ArmyDetachment implements Node {
+  id: ID! @isUnique
+  inArmies: [Army!]! @relation(name: "ArmyOnArmyDetachment")
+  kind: Detachment @relation(name: "ArmyDetachmentOnDetachment")
+}
+
+type ArmyDetachmentUnit implements Node {
+  id: ID! @isUnique
+  models: [Model!]! @relation(name: "ArmyUnitOnModel")
+  unit: Unit @relation(name: "ArmyUnitOnUnit")
+}
+
+type Detachment implements Node {
+  id: ID! @isUnique
+  type: DetachmentType!
+  cpModifier: Int!
+  restriction: DetachmentRestriction
+  armyDetachments: [ArmyDetachment!]! @relation(name: "ArmyDetachmentOnDetachment")
+  options: [DetachmentUnit!]! @relation(name: "DetachmentOnDetachmentUnit")
+}
+
+type DetachmentUnit implements Node {
+  detachments: [Detachment!]! @relation(name: "DetachmentOnDetachmentUnit")
+  id: ID! @isUnique
+  maxAmount: Int!
+  minAmount: Int!
+  unitType: UnitType!
+}
+
+type Codex implements Node {
+  models: [Model!]! @relation(name: "ModelsOnCodex")
+  name: String!
+  id: ID! @isUnique
+}
+
+type Model implements Node {
+  id: ID! @isUnique
+  type: UnitType!
+  codex: Codex! @relation(name: "ModelsOnCodex")
+  pointCost: Int!
+  powerLevelCost: Int!
+  movement: String!
+  weaponSkill: String!
+  ballisticSkill: String!
+  strength: String!
+  toughness: String!
+  wounds: Int!
+  attacks: Int!
+  leadership: Int!
+  armorSave: Int!
+  invulnerableSave: Int!
+  keywords: [String!]!
+  factions: [String!]!
+  specialRules: [SpecialRule!]! @relation(name: "ModelOnSpecialRule")
+  wargear: [WargearOption!]! @relation(name: "ModelOnWargear")
+  equipment: [Item!]! @relation(name: "EquipmentOnModel")
+  armyUnits: [ArmyDetachmentUnit!]! @relation(name: "ArmyUnitOnModel")
+  inUnits: [Unit!]! @relation(name: "UnitOnModel")
+}
+
+type Unit implements Node {
+  id: ID! @isUnique
+  models: [Model!]! @relation(name: "UnitOnModel")
+  inArmyUnits: [ArmyDetachmentUnit!]! @relation(name: "ArmyUnitOnUnit")
+}
+
+type SpecialRule implements Node {
+  description: String!
+  id: ID! @isUnique
+  name: String!
+  posessedBy: [Model!]! @relation(name: "ModelOnSpecialRule")
+}
+
+type WargearOption implements Node {
+  id: ID! @isUnique
+  model: Model! @relation(name: "ModelOnWargear")
+  amount: Int!
+  items: [Item!]! @relation(name: "ItemsOnWargear")
+}
+
+type Item implements Node {
+  equipableModels: [Model!]! @relation(name: "EquipmentOnModel")
+  inOptions: [WargearOption!]! @relation(name: "ItemsOnWargear")
+  id: ID! @isUnique
+  pointCost: String!
+}
+
+enum DetachmentType {
+  Patrol
+  Battalion
+  Brigade
+  Vanguard
+  Spearhead
+  Outrider
+  Supreme_Command
+  Super_Heavy
+  Air_Wing
+  Super_Heavy_Aux
+  Fortification
+  Aux_Support
+}
+
+enum DetachmentRestriction {
+  Faction
+  Single_Unit
+  Exclusive
+}
+
+enum UnitType {
+  HQ
+  Troop
+  Elite
+  Fast_Attack
+  Heavy_Support
+  Flyer
+  Lord_of_War
+  Fortification
+  Dedicated_Transport
+}
+
+type File implements Node {
+  contentType: String!
+  createdAt: DateTime!
+  id: ID! @isUnique
+  name: String!
+  secret: String! @isUnique
+  size: Int!
+  updatedAt: DateTime!
+  url: String! @isUnique
+}
+
+type User implements Node {
+  createdAt: DateTime!
+  id: ID! @isUnique
+  updatedAt: DateTime!
+}

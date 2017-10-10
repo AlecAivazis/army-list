@@ -7,13 +7,9 @@ import { Icon } from '~/components'
 // local imports
 import Title from '../../Title'
 
-const AppBar = ({ style, children, onPress, ...unused }) => (
-    <Bar
-        {...unused}
-        style={[styles.container, style]}
-        statusBarStyle={styles.statusBar}
-    >
-        {children}
+const AppBar = ({ style, children, onPress, button, ...unused }) => {
+    // the element to use as the action button
+    const actionButton = (
         <Button
             defaultColor="#252528"
             activeColor="#1b1b1b"
@@ -21,10 +17,21 @@ const AppBar = ({ style, children, onPress, ...unused }) => (
             style={styles.button}
             onPress={onPress}
         >
-            <Icon name="more" />
+            {button || <Icon name="more" />}
         </Button>
-    </Bar>
-)
+    )
+
+    return (
+        <Bar
+            {...unused}
+            style={[styles.container, !onPress && styles.soloHeader, style]}
+            statusBarStyle={styles.statusBar}
+        >
+            {children}
+            {onPress && actionButton}
+        </Bar>
+    )
+}
 
 const styles = {
     container: {
@@ -37,6 +44,7 @@ const styles = {
         backgroundColor: '#0E0E0F',
         barStyle: 'light-content'
     },
+    soloHeader: {},
     title: {
         color: 'white'
     },

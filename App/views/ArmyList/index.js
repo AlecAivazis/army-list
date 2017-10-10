@@ -2,6 +2,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, StatusBar } from 'react-native'
 import { QueryRenderer, graphql } from 'react-relay'
+import { withRouter } from 'react-router-native'
 import { Card, Button } from 'quark-native'
 import { grey2 } from 'quark-native/styles'
 // local imports
@@ -11,7 +12,13 @@ import List from './ArmyList'
 import environment from '~/App/environment'
 import { Loader } from '~/quark'
 
-export default () => (
+const ButtonLink = withRouter(({ history, to, children, ...unused }) => (
+    <Button {...unused} onPress={() => history.push(to)}>
+        {children}
+    </Button>
+))
+
+export default ({ history }) => (
     <QueryRenderer
         environment={environment}
         query={graphql`
@@ -42,7 +49,14 @@ export default () => (
                 <App
                     style={styles.container}
                     header={<Header />}
-                    options={[<Button key="add">Add Army</Button>]}
+                    options={[
+                        <ButtonLink to="/newArmy" key="add">
+                            Add Army
+                        </ButtonLink>,
+                        <ButtonLink to="/manage" key="manage">
+                            Manage Data
+                        </ButtonLink>
+                    ]}
                 >
                     <List armies={props.viewer.allArmies} />
                 </App>

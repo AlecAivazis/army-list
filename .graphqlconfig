@@ -1,5 +1,5 @@
 {
-  "schemaPath": "schema.graphql",
+  "schemaPath": "schema.graphcool",
   "extensions": {
     "endpoints": {
       "graphcool": "https://api.graph.cool/relay/v1/army-list"

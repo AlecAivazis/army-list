@@ -19,7 +19,7 @@ const ArmyCard = ({ army, transitionTo, ...unused }: Props) => (
             <Card {...unused}>
                 <Button
                     style={styles.container}
-                    onPressOut={() => trigger({ id: army.id })}
+                    onPress={() => trigger({ id: army.id })}
                 >
                     <Text>{army.name}</Text>
                 </Button>
