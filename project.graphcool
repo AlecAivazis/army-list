@@ -1,97 +1,1329 @@
-# project: cj8l908cf02iu0137rfa3wnqq
-# version: 4
+# source: https://api.graph.cool/relay/v1/bougatsa-battle-tome
+# timestamp: Tue Oct 10 2017 00:07:11 GMT-0700 (PDT)
+
+input AddToArmyDetachmentOnDetachmentArmyDetachmentInput {
+  kindDetachmentId: ID!
+  armyDetachmentsArmyDetachmentId: ID!
+  clientMutationId: String!
+}
+
+type AddToArmyDetachmentOnDetachmentPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  armyDetachmentsArmyDetachment: ArmyDetachment
+  kindDetachment: Detachment
+  armyDetachmentsArmyDetachmentEdge: ArmyDetachmentEdge
+  kindDetachmentEdge: DetachmentEdge
+}
+
+input AddToArmyOnArmyDetachmentArmyInput {
+  detachmentsArmyDetachmentId: ID!
+  inArmiesArmyId: ID!
+  clientMutationId: String!
+}
+
+type AddToArmyOnArmyDetachmentPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  inArmiesArmy: Army
+  detachmentsArmyDetachment: ArmyDetachment
+  inArmiesArmyEdge: ArmyEdge
+  detachmentsArmyDetachmentEdge: ArmyDetachmentEdge
+}
+
+input AddToArmyUnitOnModelArmyDetachmentUnitInput {
+  modelsModelId: ID!
+  armyUnitsArmyDetachmentUnitId: ID!
+  clientMutationId: String!
+}
+
+type AddToArmyUnitOnModelPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  armyUnitsArmyDetachmentUnit: ArmyDetachmentUnit
+  modelsModel: Model
+  armyUnitsArmyDetachmentUnitEdge: ArmyDetachmentUnitEdge
+  modelsModelEdge: ModelEdge
+}
+
+input AddToArmyUnitOnUnitArmyDetachmentUnitInput {
+  unitUnitId: ID!
+  inArmyUnitsArmyDetachmentUnitId: ID!
+  clientMutationId: String!
+}
+
+type AddToArmyUnitOnUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  inArmyUnitsArmyDetachmentUnit: ArmyDetachmentUnit
+  unitUnit: Unit
+  inArmyUnitsArmyDetachmentUnitEdge: ArmyDetachmentUnitEdge
+  unitUnitEdge: UnitEdge
+}
+
+input AddToDetachmentOnDetachmentUnitDetachmentInput {
+  optionsDetachmentUnitId: ID!
+  detachmentsDetachmentId: ID!
+  clientMutationId: String!
+}
+
+type AddToDetachmentOnDetachmentUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  detachmentsDetachment: Detachment
+  optionsDetachmentUnit: DetachmentUnit
+  detachmentsDetachmentEdge: DetachmentEdge
+  optionsDetachmentUnitEdge: DetachmentUnitEdge
+}
+
+input AddToEquipmentOnModelModelInput {
+  equipmentItemId: ID!
+  equipableModelsModelId: ID!
+  clientMutationId: String!
+}
+
+type AddToEquipmentOnModelPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  equipableModelsModel: Model
+  equipmentItem: Item
+  equipableModelsModelEdge: ModelEdge
+  equipmentItemEdge: ItemEdge
+}
+
+type AddToItemsOnWargearPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  inOptionsWargearOption: WargearOption
+  itemsItem: Item
+  inOptionsWargearOptionEdge: WargearOptionEdge
+  itemsItemEdge: ItemEdge
+}
+
+input AddToItemsOnWargearWargearOptionInput {
+  itemsItemId: ID!
+  inOptionsWargearOptionId: ID!
+  clientMutationId: String!
+}
+
+input AddToModelOnSpecialRuleModelInput {
+  specialRulesSpecialRuleId: ID!
+  posessedByModelId: ID!
+  clientMutationId: String!
+}
+
+type AddToModelOnSpecialRulePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  posessedByModel: Model
+  specialRulesSpecialRule: SpecialRule
+  posessedByModelEdge: ModelEdge
+  specialRulesSpecialRuleEdge: SpecialRuleEdge
+}
+
+input AddToModelOnWargearModelInput {
+  wargearWargearOptionId: ID!
+  modelModelId: ID!
+  clientMutationId: String!
+}
+
+type AddToModelOnWargearPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  modelModel: Model
+  wargearWargearOption: WargearOption
+  modelModelEdge: ModelEdge
+  wargearWargearOptionEdge: WargearOptionEdge
+}
+
+input AddToModelsOnCodexCodexInput {
+  modelsModelId: ID!
+  codexCodexId: ID!
+  clientMutationId: String!
+}
+
+type AddToModelsOnCodexPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  codexCodex: Codex
+  modelsModel: Model
+  codexCodexEdge: CodexEdge
+  modelsModelEdge: ModelEdge
+}
+
+input AddToUnitOnModelModelInput {
+  inUnitsUnitId: ID!
+  modelsModelId: ID!
+  clientMutationId: String!
+}
+
+type AddToUnitOnModelPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  modelsModel: Model
+  inUnitsUnit: Unit
+  modelsModelEdge: ModelEdge
+  inUnitsUnitEdge: UnitEdge
+}
 
 type Army implements Node {
-  id: ID! @isUnique
+  detachments(filter: ArmyDetachmentFilter, orderBy: ArmyDetachmentOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ArmyDetachmentConnection
+  id: ID!
   name: String!
-  detachments: [ArmyDetachment!]! @relation(name: "ArmyOnArmyDetachment")
+}
+
+# A connection to a list of items.
+type ArmyConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [ArmyEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
 }
 
 type ArmyDetachment implements Node {
-  id: ID! @isUnique
-  inArmies: [Army!]! @relation(name: "ArmyOnArmyDetachment")
-  kind: Detachment @relation(name: "ArmyDetachmentOnDetachment")
+  id: ID!
+  inArmies(filter: ArmyFilter, orderBy: ArmyOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ArmyConnection
+  kind(filter: DetachmentFilter): Detachment
+}
+
+# A connection to a list of items.
+type ArmyDetachmentConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [ArmyDetachmentEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
+}
+
+# An edge in a connection.
+type ArmyDetachmentEdge {
+  # The item at the end of the edge.
+  node: ArmyDetachment!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input ArmyDetachmentFilter {
+  # Logical AND on all given filters.
+  AND: [ArmyDetachmentFilter!]
+
+  # Logical OR on all given filters.
+  OR: [ArmyDetachmentFilter!]
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+  inArmies_every: ArmyFilter
+  inArmies_some: ArmyFilter
+  inArmies_none: ArmyFilter
+  kind: DetachmentFilter
+}
+
+input ArmyDetachmentinArmiesArmy {
+  name: String!
+  detachmentsIds: [ID!]
+  detachments: [ArmydetachmentsArmyDetachment!]
+}
+
+input ArmyDetachmentkindDetachment {
+  cpModifier: Int!
+  restriction: DetachmentRestriction
+  type: DetachmentType!
+  armyDetachmentsIds: [ID!]
+  armyDetachments: [DetachmentarmyDetachmentsArmyDetachment!]
+  optionsIds: [ID!]
+  options: [DetachmentoptionsDetachmentUnit!]
+}
+
+enum ArmyDetachmentOrderBy {
+  id_ASC
+  id_DESC
+}
+
+input ArmydetachmentsArmyDetachment {
+  kindId: ID
+  kind: ArmyDetachmentkindDetachment
+  inArmiesIds: [ID!]
+  inArmies: [ArmyDetachmentinArmiesArmy!]
 }
 
 type ArmyDetachmentUnit implements Node {
-  id: ID! @isUnique
-  models: [Model!]! @relation(name: "ArmyUnitOnModel")
-  unit: Unit @relation(name: "ArmyUnitOnUnit")
+  id: ID!
+  models(filter: ModelFilter, orderBy: ModelOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ModelConnection
+  unit(filter: UnitFilter): Unit
 }
 
-type Detachment implements Node {
-  id: ID! @isUnique
-  type: DetachmentType!
-  cpModifier: Int!
-  restriction: DetachmentRestriction
-  armyDetachments: [ArmyDetachment!]! @relation(name: "ArmyDetachmentOnDetachment")
-  options: [DetachmentUnit!]! @relation(name: "DetachmentOnDetachmentUnit")
+# A connection to a list of items.
+type ArmyDetachmentUnitConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [ArmyDetachmentUnitEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
 }
 
-type DetachmentUnit implements Node {
-  detachments: [Detachment!]! @relation(name: "DetachmentOnDetachmentUnit")
-  id: ID! @isUnique
-  maxAmount: Int!
-  minAmount: Int!
-  unitType: UnitType!
+# An edge in a connection.
+type ArmyDetachmentUnitEdge {
+  # The item at the end of the edge.
+  node: ArmyDetachmentUnit!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input ArmyDetachmentUnitFilter {
+  # Logical AND on all given filters.
+  AND: [ArmyDetachmentUnitFilter!]
+
+  # Logical OR on all given filters.
+  OR: [ArmyDetachmentUnitFilter!]
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+  models_every: ModelFilter
+  models_some: ModelFilter
+  models_none: ModelFilter
+  unit: UnitFilter
+}
+
+input ArmyDetachmentUnitmodelsModel {
+  armorSave: Int!
+  attacks: Int!
+  ballisticSkill: String!
+  factions: [String!]!
+  invulnerableSave: Int!
+  keywords: [String!]!
+  leadership: Int!
+  movement: String!
+  pointCost: Int!
+  powerLevelCost: Int!
+  strength: String!
+  toughness: String!
+  type: UnitType!
+  weaponSkill: String!
+  wounds: Int!
+  codexId: ID
+  codex: ModelcodexCodex
+  armyUnitsIds: [ID!]
+  armyUnits: [ModelarmyUnitsArmyDetachmentUnit!]
+  equipmentIds: [ID!]
+  equipment: [ModelequipmentItem!]
+  inUnitsIds: [ID!]
+  inUnits: [ModelinUnitsUnit!]
+  specialRulesIds: [ID!]
+  specialRules: [ModelspecialRulesSpecialRule!]
+  wargearIds: [ID!]
+  wargear: [ModelwargearWargearOption!]
+}
+
+enum ArmyDetachmentUnitOrderBy {
+  id_ASC
+  id_DESC
+}
+
+input ArmyDetachmentUnitunitUnit {
+  inArmyUnitsIds: [ID!]
+  inArmyUnits: [UnitinArmyUnitsArmyDetachmentUnit!]
+  modelsIds: [ID!]
+  models: [UnitmodelsModel!]
+}
+
+# An edge in a connection.
+type ArmyEdge {
+  # The item at the end of the edge.
+  node: Army!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input ArmyFilter {
+  # Logical AND on all given filters.
+  AND: [ArmyFilter!]
+
+  # Logical OR on all given filters.
+  OR: [ArmyFilter!]
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+  name: String
+
+  # All values that are not equal to given value.
+  name_not: String
+
+  # All values that are contained in given list.
+  name_in: [String!]
+
+  # All values that are not contained in given list.
+  name_not_in: [String!]
+
+  # All values less than the given value.
+  name_lt: String
+
+  # All values less than or equal the given value.
+  name_lte: String
+
+  # All values greater than the given value.
+  name_gt: String
+
+  # All values greater than or equal the given value.
+  name_gte: String
+
+  # All values containing the given string.
+  name_contains: String
+
+  # All values not containing the given string.
+  name_not_contains: String
+
+  # All values starting with the given string.
+  name_starts_with: String
+
+  # All values not starting with the given string.
+  name_not_starts_with: String
+
+  # All values ending with the given string.
+  name_ends_with: String
+
+  # All values not ending with the given string.
+  name_not_ends_with: String
+  detachments_every: ArmyDetachmentFilter
+  detachments_some: ArmyDetachmentFilter
+  detachments_none: ArmyDetachmentFilter
+}
+
+enum ArmyOrderBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
 }
 
 type Codex implements Node {
-  models: [Model!]! @relation(name: "ModelsOnCodex")
+  id: ID!
+  models(filter: ModelFilter, orderBy: ModelOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ModelConnection
   name: String!
-  id: ID! @isUnique
 }
 
-type Model implements Node {
-  id: ID! @isUnique
-  type: UnitType!
-  codex: Codex! @relation(name: "ModelsOnCodex")
-  pointCost: Int!
-  powerLevelCost: Int!
-  movement: String!
-  weaponSkill: String!
-  ballisticSkill: String!
-  strength: String!
-  toughness: String!
-  wounds: Int!
-  attacks: Int!
-  leadership: Int!
+# A connection to a list of items.
+type CodexConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [CodexEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
+}
+
+# An edge in a connection.
+type CodexEdge {
+  # The item at the end of the edge.
+  node: Codex!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input CodexFilter {
+  # Logical AND on all given filters.
+  AND: [CodexFilter!]
+
+  # Logical OR on all given filters.
+  OR: [CodexFilter!]
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+  name: String
+
+  # All values that are not equal to given value.
+  name_not: String
+
+  # All values that are contained in given list.
+  name_in: [String!]
+
+  # All values that are not contained in given list.
+  name_not_in: [String!]
+
+  # All values less than the given value.
+  name_lt: String
+
+  # All values less than or equal the given value.
+  name_lte: String
+
+  # All values greater than the given value.
+  name_gt: String
+
+  # All values greater than or equal the given value.
+  name_gte: String
+
+  # All values containing the given string.
+  name_contains: String
+
+  # All values not containing the given string.
+  name_not_contains: String
+
+  # All values starting with the given string.
+  name_starts_with: String
+
+  # All values not starting with the given string.
+  name_not_starts_with: String
+
+  # All values ending with the given string.
+  name_ends_with: String
+
+  # All values not ending with the given string.
+  name_not_ends_with: String
+  models_every: ModelFilter
+  models_some: ModelFilter
+  models_none: ModelFilter
+}
+
+input CodexmodelsModel {
   armorSave: Int!
+  attacks: Int!
+  ballisticSkill: String!
+  factions: [String!]!
   invulnerableSave: Int!
   keywords: [String!]!
-  factions: [String!]!
-  specialRules: [SpecialRule!]! @relation(name: "ModelOnSpecialRule")
-  wargear: [WargearOption!]! @relation(name: "ModelOnWargear")
-  equipment: [Item!]! @relation(name: "EquipmentOnModel")
-  armyUnits: [ArmyDetachmentUnit!]! @relation(name: "ArmyUnitOnModel")
-  inUnits: [Unit!]! @relation(name: "UnitOnModel")
+  leadership: Int!
+  movement: String!
+  pointCost: Int!
+  powerLevelCost: Int!
+  strength: String!
+  toughness: String!
+  type: UnitType!
+  weaponSkill: String!
+  wounds: Int!
+  armyUnitsIds: [ID!]
+  armyUnits: [ModelarmyUnitsArmyDetachmentUnit!]
+  equipmentIds: [ID!]
+  equipment: [ModelequipmentItem!]
+  inUnitsIds: [ID!]
+  inUnits: [ModelinUnitsUnit!]
+  specialRulesIds: [ID!]
+  specialRules: [ModelspecialRulesSpecialRule!]
+  wargearIds: [ID!]
+  wargear: [ModelwargearWargearOption!]
 }
 
-type Unit implements Node {
-  id: ID! @isUnique
-  models: [Model!]! @relation(name: "UnitOnModel")
-  inArmyUnits: [ArmyDetachmentUnit!]! @relation(name: "ArmyUnitOnUnit")
+enum CodexOrderBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
 }
 
-type SpecialRule implements Node {
-  description: String!
-  id: ID! @isUnique
+input CreateArmy {
   name: String!
-  posessedBy: [Model!]! @relation(name: "ModelOnSpecialRule")
+  detachmentsIds: [ID!]
+  detachments: [ArmydetachmentsArmyDetachment!]
 }
 
-type WargearOption implements Node {
-  id: ID! @isUnique
-  model: Model! @relation(name: "ModelOnWargear")
-  amount: Int!
-  items: [Item!]! @relation(name: "ItemsOnWargear")
+input CreateArmyDetachment {
+  kindId: ID
+  kind: ArmyDetachmentkindDetachment
+  inArmiesIds: [ID!]
+  inArmies: [ArmyDetachmentinArmiesArmy!]
 }
 
-type Item implements Node {
-  equipableModels: [Model!]! @relation(name: "EquipmentOnModel")
-  inOptions: [WargearOption!]! @relation(name: "ItemsOnWargear")
-  id: ID! @isUnique
+input CreateArmyDetachmentInput {
+  kindId: ID
+  kind: ArmyDetachmentkindDetachment
+  inArmiesIds: [ID!]
+  inArmies: [ArmyDetachmentinArmiesArmy!]
+  clientMutationId: String!
+}
+
+type CreateArmyDetachmentPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  armyDetachment: ArmyDetachment
+  edge: ArmyDetachmentEdge
+  kind: Detachment
+}
+
+input CreateArmyDetachmentUnit {
+  unitId: ID
+  unit: ArmyDetachmentUnitunitUnit
+  modelsIds: [ID!]
+  models: [ArmyDetachmentUnitmodelsModel!]
+}
+
+input CreateArmyDetachmentUnitInput {
+  unitId: ID
+  unit: ArmyDetachmentUnitunitUnit
+  modelsIds: [ID!]
+  models: [ArmyDetachmentUnitmodelsModel!]
+  clientMutationId: String!
+}
+
+type CreateArmyDetachmentUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  armyDetachmentUnit: ArmyDetachmentUnit
+  edge: ArmyDetachmentUnitEdge
+  unit: Unit
+}
+
+input CreateArmyInput {
+  name: String!
+  detachmentsIds: [ID!]
+  detachments: [ArmydetachmentsArmyDetachment!]
+  clientMutationId: String!
+}
+
+type CreateArmyPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  army: Army
+  edge: ArmyEdge
+}
+
+input CreateCodex {
+  name: String!
+  modelsIds: [ID!]
+  models: [CodexmodelsModel!]
+}
+
+input CreateCodexInput {
+  name: String!
+  modelsIds: [ID!]
+  models: [CodexmodelsModel!]
+  clientMutationId: String!
+}
+
+type CreateCodexPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  codex: Codex
+  edge: CodexEdge
+}
+
+input CreateDetachment {
+  cpModifier: Int!
+  restriction: DetachmentRestriction
+  type: DetachmentType!
+  armyDetachmentsIds: [ID!]
+  armyDetachments: [DetachmentarmyDetachmentsArmyDetachment!]
+  optionsIds: [ID!]
+  options: [DetachmentoptionsDetachmentUnit!]
+}
+
+input CreateDetachmentInput {
+  cpModifier: Int!
+  restriction: DetachmentRestriction
+  type: DetachmentType!
+  armyDetachmentsIds: [ID!]
+  armyDetachments: [DetachmentarmyDetachmentsArmyDetachment!]
+  optionsIds: [ID!]
+  options: [DetachmentoptionsDetachmentUnit!]
+  clientMutationId: String!
+}
+
+type CreateDetachmentPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  detachment: Detachment
+  edge: DetachmentEdge
+}
+
+input CreateDetachmentUnit {
+  maxAmount: Int!
+  minAmount: Int!
+  unitType: UnitType!
+  detachmentsIds: [ID!]
+  detachments: [DetachmentUnitdetachmentsDetachment!]
+}
+
+input CreateDetachmentUnitInput {
+  maxAmount: Int!
+  minAmount: Int!
+  unitType: UnitType!
+  detachmentsIds: [ID!]
+  detachments: [DetachmentUnitdetachmentsDetachment!]
+  clientMutationId: String!
+}
+
+type CreateDetachmentUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  detachmentUnit: DetachmentUnit
+  edge: DetachmentUnitEdge
+}
+
+input CreateFile {
+  name: String!
+}
+
+input CreateFileInput {
+  name: String!
+  clientMutationId: String!
+}
+
+type CreateFilePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  file: File
+  edge: FileEdge
+}
+
+input CreateItem {
   pointCost: String!
+  equipableModelsIds: [ID!]
+  equipableModels: [ItemequipableModelsModel!]
+  inOptionsIds: [ID!]
+  inOptions: [IteminOptionsWargearOption!]
+}
+
+input CreateItemInput {
+  pointCost: String!
+  equipableModelsIds: [ID!]
+  equipableModels: [ItemequipableModelsModel!]
+  inOptionsIds: [ID!]
+  inOptions: [IteminOptionsWargearOption!]
+  clientMutationId: String!
+}
+
+type CreateItemPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  item: Item
+  edge: ItemEdge
+}
+
+input CreateModel {
+  armorSave: Int!
+  attacks: Int!
+  ballisticSkill: String!
+  factions: [String!]!
+  invulnerableSave: Int!
+  keywords: [String!]!
+  leadership: Int!
+  movement: String!
+  pointCost: Int!
+  powerLevelCost: Int!
+  strength: String!
+  toughness: String!
+  type: UnitType!
+  weaponSkill: String!
+  wounds: Int!
+  codexId: ID
+  codex: ModelcodexCodex
+  armyUnitsIds: [ID!]
+  armyUnits: [ModelarmyUnitsArmyDetachmentUnit!]
+  equipmentIds: [ID!]
+  equipment: [ModelequipmentItem!]
+  inUnitsIds: [ID!]
+  inUnits: [ModelinUnitsUnit!]
+  specialRulesIds: [ID!]
+  specialRules: [ModelspecialRulesSpecialRule!]
+  wargearIds: [ID!]
+  wargear: [ModelwargearWargearOption!]
+}
+
+input CreateModelInput {
+  armorSave: Int!
+  attacks: Int!
+  ballisticSkill: String!
+  factions: [String!]!
+  invulnerableSave: Int!
+  keywords: [String!]!
+  leadership: Int!
+  movement: String!
+  pointCost: Int!
+  powerLevelCost: Int!
+  strength: String!
+  toughness: String!
+  type: UnitType!
+  weaponSkill: String!
+  wounds: Int!
+  codexId: ID
+  codex: ModelcodexCodex
+  armyUnitsIds: [ID!]
+  armyUnits: [ModelarmyUnitsArmyDetachmentUnit!]
+  equipmentIds: [ID!]
+  equipment: [ModelequipmentItem!]
+  inUnitsIds: [ID!]
+  inUnits: [ModelinUnitsUnit!]
+  specialRulesIds: [ID!]
+  specialRules: [ModelspecialRulesSpecialRule!]
+  wargearIds: [ID!]
+  wargear: [ModelwargearWargearOption!]
+  clientMutationId: String!
+}
+
+type CreateModelPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  model: Model
+  edge: ModelEdge
+  codex: Codex
+}
+
+input CreateSpecialRule {
+  description: String!
+  name: String!
+  posessedByIds: [ID!]
+  posessedBy: [SpecialRuleposessedByModel!]
+}
+
+input CreateSpecialRuleInput {
+  description: String!
+  name: String!
+  posessedByIds: [ID!]
+  posessedBy: [SpecialRuleposessedByModel!]
+  clientMutationId: String!
+}
+
+type CreateSpecialRulePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  specialRule: SpecialRule
+  edge: SpecialRuleEdge
+}
+
+input CreateUnit {
+  inArmyUnitsIds: [ID!]
+  inArmyUnits: [UnitinArmyUnitsArmyDetachmentUnit!]
+  modelsIds: [ID!]
+  models: [UnitmodelsModel!]
+}
+
+input CreateUnitInput {
+  inArmyUnitsIds: [ID!]
+  inArmyUnits: [UnitinArmyUnitsArmyDetachmentUnit!]
+  modelsIds: [ID!]
+  models: [UnitmodelsModel!]
+  clientMutationId: String!
+}
+
+type CreateUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  unit: Unit
+  edge: UnitEdge
+}
+
+# If authentication was successful the payload contains the user and a token. If unsuccessful this payload is null.
+type CreateUserPayload {
+  user: User
+  clientMutationId: String
+  viewer: Viewer!
+}
+
+input CreateWargearOption {
+  amount: Int!
+  modelId: ID
+  model: WargearOptionmodelModel
+  itemsIds: [ID!]
+  items: [WargearOptionitemsItem!]
+}
+
+input CreateWargearOptionInput {
+  amount: Int!
+  modelId: ID
+  model: WargearOptionmodelModel
+  itemsIds: [ID!]
+  items: [WargearOptionitemsItem!]
+  clientMutationId: String!
+}
+
+type CreateWargearOptionPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  wargearOption: WargearOption
+  edge: WargearOptionEdge
+  model: Model
+}
+
+scalar DateTime
+
+input DeleteArmyDetachmentInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteArmyDetachmentPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  armyDetachment: ArmyDetachment
+  edge: ArmyDetachmentEdge
+  kind: Detachment
+  deletedId: ID
+}
+
+input DeleteArmyDetachmentUnitInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteArmyDetachmentUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  armyDetachmentUnit: ArmyDetachmentUnit
+  edge: ArmyDetachmentUnitEdge
+  unit: Unit
+  deletedId: ID
+}
+
+input DeleteArmyInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteArmyPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  army: Army
+  edge: ArmyEdge
+  deletedId: ID
+}
+
+input DeleteCodexInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteCodexPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  codex: Codex
+  edge: CodexEdge
+  deletedId: ID
+}
+
+input DeleteDetachmentInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteDetachmentPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  detachment: Detachment
+  edge: DetachmentEdge
+  deletedId: ID
+}
+
+input DeleteDetachmentUnitInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteDetachmentUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  detachmentUnit: DetachmentUnit
+  edge: DetachmentUnitEdge
+  deletedId: ID
+}
+
+input DeleteFileInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteFilePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  file: File
+  edge: FileEdge
+  deletedId: ID
+}
+
+input DeleteItemInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteItemPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  item: Item
+  edge: ItemEdge
+  deletedId: ID
+}
+
+input DeleteModelInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteModelPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  model: Model
+  edge: ModelEdge
+  codex: Codex
+  deletedId: ID
+}
+
+input DeleteSpecialRuleInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteSpecialRulePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  specialRule: SpecialRule
+  edge: SpecialRuleEdge
+  deletedId: ID
+}
+
+input DeleteUnitInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  unit: Unit
+  edge: UnitEdge
+  deletedId: ID
+}
+
+input DeleteUserInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteUserPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  user: User
+  edge: UserEdge
+  deletedId: ID
+}
+
+input DeleteWargearOptionInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type DeleteWargearOptionPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  wargearOption: WargearOption
+  edge: WargearOptionEdge
+  model: Model
+  deletedId: ID
+}
+
+type Detachment implements Node {
+  armyDetachments(filter: ArmyDetachmentFilter, orderBy: ArmyDetachmentOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ArmyDetachmentConnection
+  cpModifier: Int!
+  id: ID!
+  options(filter: DetachmentUnitFilter, orderBy: DetachmentUnitOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): DetachmentUnitConnection
+  restriction: DetachmentRestriction
+  type: DetachmentType!
+}
+
+input DetachmentarmyDetachmentsArmyDetachment {
+  inArmiesIds: [ID!]
+  inArmies: [ArmyDetachmentinArmiesArmy!]
+}
+
+# A connection to a list of items.
+type DetachmentConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [DetachmentEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
+}
+
+# An edge in a connection.
+type DetachmentEdge {
+  # The item at the end of the edge.
+  node: Detachment!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input DetachmentFilter {
+  # Logical AND on all given filters.
+  AND: [DetachmentFilter!]
+
+  # Logical OR on all given filters.
+  OR: [DetachmentFilter!]
+  cpModifier: Int
+
+  # All values that are not equal to given value.
+  cpModifier_not: Int
+
+  # All values that are contained in given list.
+  cpModifier_in: [Int!]
+
+  # All values that are not contained in given list.
+  cpModifier_not_in: [Int!]
+
+  # All values less than the given value.
+  cpModifier_lt: Int
+
+  # All values less than or equal the given value.
+  cpModifier_lte: Int
+
+  # All values greater than the given value.
+  cpModifier_gt: Int
+
+  # All values greater than or equal the given value.
+  cpModifier_gte: Int
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+  restriction: DetachmentRestriction
+
+  # All values that are not equal to given value.
+  restriction_not: DetachmentRestriction
+
+  # All values that are contained in given list.
+  restriction_in: [DetachmentRestriction!]
+
+  # All values that are not contained in given list.
+  restriction_not_in: [DetachmentRestriction!]
+  type: DetachmentType
+
+  # All values that are not equal to given value.
+  type_not: DetachmentType
+
+  # All values that are contained in given list.
+  type_in: [DetachmentType!]
+
+  # All values that are not contained in given list.
+  type_not_in: [DetachmentType!]
+  armyDetachments_every: ArmyDetachmentFilter
+  armyDetachments_some: ArmyDetachmentFilter
+  armyDetachments_none: ArmyDetachmentFilter
+  options_every: DetachmentUnitFilter
+  options_some: DetachmentUnitFilter
+  options_none: DetachmentUnitFilter
+}
+
+input DetachmentoptionsDetachmentUnit {
+  maxAmount: Int!
+  minAmount: Int!
+  unitType: UnitType!
+  detachmentsIds: [ID!]
+  detachments: [DetachmentUnitdetachmentsDetachment!]
+}
+
+enum DetachmentOrderBy {
+  cpModifier_ASC
+  cpModifier_DESC
+  id_ASC
+  id_DESC
+  restriction_ASC
+  restriction_DESC
+  type_ASC
+  type_DESC
+}
+
+enum DetachmentRestriction {
+  Faction
+  Single_Unit
+  Exclusive
 }
 
 enum DetachmentType {
@@ -109,10 +1341,1761 @@ enum DetachmentType {
   Aux_Support
 }
 
-enum DetachmentRestriction {
-  Faction
-  Single_Unit
-  Exclusive
+type DetachmentUnit implements Node {
+  detachments(filter: DetachmentFilter, orderBy: DetachmentOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): DetachmentConnection
+  id: ID!
+  maxAmount: Int!
+  minAmount: Int!
+  unitType: UnitType!
+}
+
+# A connection to a list of items.
+type DetachmentUnitConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [DetachmentUnitEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
+}
+
+input DetachmentUnitdetachmentsDetachment {
+  cpModifier: Int!
+  restriction: DetachmentRestriction
+  type: DetachmentType!
+  armyDetachmentsIds: [ID!]
+  armyDetachments: [DetachmentarmyDetachmentsArmyDetachment!]
+  optionsIds: [ID!]
+  options: [DetachmentoptionsDetachmentUnit!]
+}
+
+# An edge in a connection.
+type DetachmentUnitEdge {
+  # The item at the end of the edge.
+  node: DetachmentUnit!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input DetachmentUnitFilter {
+  # Logical AND on all given filters.
+  AND: [DetachmentUnitFilter!]
+
+  # Logical OR on all given filters.
+  OR: [DetachmentUnitFilter!]
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+  maxAmount: Int
+
+  # All values that are not equal to given value.
+  maxAmount_not: Int
+
+  # All values that are contained in given list.
+  maxAmount_in: [Int!]
+
+  # All values that are not contained in given list.
+  maxAmount_not_in: [Int!]
+
+  # All values less than the given value.
+  maxAmount_lt: Int
+
+  # All values less than or equal the given value.
+  maxAmount_lte: Int
+
+  # All values greater than the given value.
+  maxAmount_gt: Int
+
+  # All values greater than or equal the given value.
+  maxAmount_gte: Int
+  minAmount: Int
+
+  # All values that are not equal to given value.
+  minAmount_not: Int
+
+  # All values that are contained in given list.
+  minAmount_in: [Int!]
+
+  # All values that are not contained in given list.
+  minAmount_not_in: [Int!]
+
+  # All values less than the given value.
+  minAmount_lt: Int
+
+  # All values less than or equal the given value.
+  minAmount_lte: Int
+
+  # All values greater than the given value.
+  minAmount_gt: Int
+
+  # All values greater than or equal the given value.
+  minAmount_gte: Int
+  unitType: UnitType
+
+  # All values that are not equal to given value.
+  unitType_not: UnitType
+
+  # All values that are contained in given list.
+  unitType_in: [UnitType!]
+
+  # All values that are not contained in given list.
+  unitType_not_in: [UnitType!]
+  detachments_every: DetachmentFilter
+  detachments_some: DetachmentFilter
+  detachments_none: DetachmentFilter
+}
+
+enum DetachmentUnitOrderBy {
+  id_ASC
+  id_DESC
+  maxAmount_ASC
+  maxAmount_DESC
+  minAmount_ASC
+  minAmount_DESC
+  unitType_ASC
+  unitType_DESC
+}
+
+type File implements Node {
+  contentType: String!
+  createdAt: DateTime!
+  id: ID!
+  name: String!
+  secret: String!
+  size: Int!
+  updatedAt: DateTime!
+  url: String!
+}
+
+# A connection to a list of items.
+type FileConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [FileEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
+}
+
+# An edge in a connection.
+type FileEdge {
+  # The item at the end of the edge.
+  node: File!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input FileFilter {
+  # Logical AND on all given filters.
+  AND: [FileFilter!]
+
+  # Logical OR on all given filters.
+  OR: [FileFilter!]
+  contentType: String
+
+  # All values that are not equal to given value.
+  contentType_not: String
+
+  # All values that are contained in given list.
+  contentType_in: [String!]
+
+  # All values that are not contained in given list.
+  contentType_not_in: [String!]
+
+  # All values less than the given value.
+  contentType_lt: String
+
+  # All values less than or equal the given value.
+  contentType_lte: String
+
+  # All values greater than the given value.
+  contentType_gt: String
+
+  # All values greater than or equal the given value.
+  contentType_gte: String
+
+  # All values containing the given string.
+  contentType_contains: String
+
+  # All values not containing the given string.
+  contentType_not_contains: String
+
+  # All values starting with the given string.
+  contentType_starts_with: String
+
+  # All values not starting with the given string.
+  contentType_not_starts_with: String
+
+  # All values ending with the given string.
+  contentType_ends_with: String
+
+  # All values not ending with the given string.
+  contentType_not_ends_with: String
+  createdAt: DateTime
+
+  # All values that are not equal to given value.
+  createdAt_not: DateTime
+
+  # All values that are contained in given list.
+  createdAt_in: [DateTime!]
+
+  # All values that are not contained in given list.
+  createdAt_not_in: [DateTime!]
+
+  # All values less than the given value.
+  createdAt_lt: DateTime
+
+  # All values less than or equal the given value.
+  createdAt_lte: DateTime
+
+  # All values greater than the given value.
+  createdAt_gt: DateTime
+
+  # All values greater than or equal the given value.
+  createdAt_gte: DateTime
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+  name: String
+
+  # All values that are not equal to given value.
+  name_not: String
+
+  # All values that are contained in given list.
+  name_in: [String!]
+
+  # All values that are not contained in given list.
+  name_not_in: [String!]
+
+  # All values less than the given value.
+  name_lt: String
+
+  # All values less than or equal the given value.
+  name_lte: String
+
+  # All values greater than the given value.
+  name_gt: String
+
+  # All values greater than or equal the given value.
+  name_gte: String
+
+  # All values containing the given string.
+  name_contains: String
+
+  # All values not containing the given string.
+  name_not_contains: String
+
+  # All values starting with the given string.
+  name_starts_with: String
+
+  # All values not starting with the given string.
+  name_not_starts_with: String
+
+  # All values ending with the given string.
+  name_ends_with: String
+
+  # All values not ending with the given string.
+  name_not_ends_with: String
+  secret: String
+
+  # All values that are not equal to given value.
+  secret_not: String
+
+  # All values that are contained in given list.
+  secret_in: [String!]
+
+  # All values that are not contained in given list.
+  secret_not_in: [String!]
+
+  # All values less than the given value.
+  secret_lt: String
+
+  # All values less than or equal the given value.
+  secret_lte: String
+
+  # All values greater than the given value.
+  secret_gt: String
+
+  # All values greater than or equal the given value.
+  secret_gte: String
+
+  # All values containing the given string.
+  secret_contains: String
+
+  # All values not containing the given string.
+  secret_not_contains: String
+
+  # All values starting with the given string.
+  secret_starts_with: String
+
+  # All values not starting with the given string.
+  secret_not_starts_with: String
+
+  # All values ending with the given string.
+  secret_ends_with: String
+
+  # All values not ending with the given string.
+  secret_not_ends_with: String
+  size: Int
+
+  # All values that are not equal to given value.
+  size_not: Int
+
+  # All values that are contained in given list.
+  size_in: [Int!]
+
+  # All values that are not contained in given list.
+  size_not_in: [Int!]
+
+  # All values less than the given value.
+  size_lt: Int
+
+  # All values less than or equal the given value.
+  size_lte: Int
+
+  # All values greater than the given value.
+  size_gt: Int
+
+  # All values greater than or equal the given value.
+  size_gte: Int
+  updatedAt: DateTime
+
+  # All values that are not equal to given value.
+  updatedAt_not: DateTime
+
+  # All values that are contained in given list.
+  updatedAt_in: [DateTime!]
+
+  # All values that are not contained in given list.
+  updatedAt_not_in: [DateTime!]
+
+  # All values less than the given value.
+  updatedAt_lt: DateTime
+
+  # All values less than or equal the given value.
+  updatedAt_lte: DateTime
+
+  # All values greater than the given value.
+  updatedAt_gt: DateTime
+
+  # All values greater than or equal the given value.
+  updatedAt_gte: DateTime
+  url: String
+
+  # All values that are not equal to given value.
+  url_not: String
+
+  # All values that are contained in given list.
+  url_in: [String!]
+
+  # All values that are not contained in given list.
+  url_not_in: [String!]
+
+  # All values less than the given value.
+  url_lt: String
+
+  # All values less than or equal the given value.
+  url_lte: String
+
+  # All values greater than the given value.
+  url_gt: String
+
+  # All values greater than or equal the given value.
+  url_gte: String
+
+  # All values containing the given string.
+  url_contains: String
+
+  # All values not containing the given string.
+  url_not_contains: String
+
+  # All values starting with the given string.
+  url_starts_with: String
+
+  # All values not starting with the given string.
+  url_not_starts_with: String
+
+  # All values ending with the given string.
+  url_ends_with: String
+
+  # All values not ending with the given string.
+  url_not_ends_with: String
+}
+
+enum FileOrderBy {
+  contentType_ASC
+  contentType_DESC
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  secret_ASC
+  secret_DESC
+  size_ASC
+  size_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  url_ASC
+  url_DESC
+}
+
+type Item implements Node {
+  equipableModels(filter: ModelFilter, orderBy: ModelOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ModelConnection
+  id: ID!
+  inOptions(filter: WargearOptionFilter, orderBy: WargearOptionOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): WargearOptionConnection
+  pointCost: String!
+}
+
+# A connection to a list of items.
+type ItemConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [ItemEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
+}
+
+# An edge in a connection.
+type ItemEdge {
+  # The item at the end of the edge.
+  node: Item!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input ItemequipableModelsModel {
+  armorSave: Int!
+  attacks: Int!
+  ballisticSkill: String!
+  factions: [String!]!
+  invulnerableSave: Int!
+  keywords: [String!]!
+  leadership: Int!
+  movement: String!
+  pointCost: Int!
+  powerLevelCost: Int!
+  strength: String!
+  toughness: String!
+  type: UnitType!
+  weaponSkill: String!
+  wounds: Int!
+  codexId: ID
+  codex: ModelcodexCodex
+  armyUnitsIds: [ID!]
+  armyUnits: [ModelarmyUnitsArmyDetachmentUnit!]
+  equipmentIds: [ID!]
+  equipment: [ModelequipmentItem!]
+  inUnitsIds: [ID!]
+  inUnits: [ModelinUnitsUnit!]
+  specialRulesIds: [ID!]
+  specialRules: [ModelspecialRulesSpecialRule!]
+  wargearIds: [ID!]
+  wargear: [ModelwargearWargearOption!]
+}
+
+input ItemFilter {
+  # Logical AND on all given filters.
+  AND: [ItemFilter!]
+
+  # Logical OR on all given filters.
+  OR: [ItemFilter!]
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+  pointCost: String
+
+  # All values that are not equal to given value.
+  pointCost_not: String
+
+  # All values that are contained in given list.
+  pointCost_in: [String!]
+
+  # All values that are not contained in given list.
+  pointCost_not_in: [String!]
+
+  # All values less than the given value.
+  pointCost_lt: String
+
+  # All values less than or equal the given value.
+  pointCost_lte: String
+
+  # All values greater than the given value.
+  pointCost_gt: String
+
+  # All values greater than or equal the given value.
+  pointCost_gte: String
+
+  # All values containing the given string.
+  pointCost_contains: String
+
+  # All values not containing the given string.
+  pointCost_not_contains: String
+
+  # All values starting with the given string.
+  pointCost_starts_with: String
+
+  # All values not starting with the given string.
+  pointCost_not_starts_with: String
+
+  # All values ending with the given string.
+  pointCost_ends_with: String
+
+  # All values not ending with the given string.
+  pointCost_not_ends_with: String
+  equipableModels_every: ModelFilter
+  equipableModels_some: ModelFilter
+  equipableModels_none: ModelFilter
+  inOptions_every: WargearOptionFilter
+  inOptions_some: WargearOptionFilter
+  inOptions_none: WargearOptionFilter
+}
+
+input IteminOptionsWargearOption {
+  amount: Int!
+  modelId: ID
+  model: WargearOptionmodelModel
+  itemsIds: [ID!]
+  items: [WargearOptionitemsItem!]
+}
+
+enum ItemOrderBy {
+  id_ASC
+  id_DESC
+  pointCost_ASC
+  pointCost_DESC
+}
+
+type Model implements Node {
+  armorSave: Int!
+  armyUnits(filter: ArmyDetachmentUnitFilter, orderBy: ArmyDetachmentUnitOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ArmyDetachmentUnitConnection
+  attacks: Int!
+  ballisticSkill: String!
+  codex(filter: CodexFilter): Codex!
+  equipment(filter: ItemFilter, orderBy: ItemOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ItemConnection
+  factions: [String!]!
+  id: ID!
+  inUnits(filter: UnitFilter, orderBy: UnitOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): UnitConnection
+  invulnerableSave: Int!
+  keywords: [String!]!
+  leadership: Int!
+  movement: String!
+  pointCost: Int!
+  powerLevelCost: Int!
+  specialRules(filter: SpecialRuleFilter, orderBy: SpecialRuleOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): SpecialRuleConnection
+  strength: String!
+  toughness: String!
+  type: UnitType!
+  wargear(filter: WargearOptionFilter, orderBy: WargearOptionOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): WargearOptionConnection
+  weaponSkill: String!
+  wounds: Int!
+}
+
+input ModelarmyUnitsArmyDetachmentUnit {
+  unitId: ID
+  unit: ArmyDetachmentUnitunitUnit
+  modelsIds: [ID!]
+  models: [ArmyDetachmentUnitmodelsModel!]
+}
+
+input ModelcodexCodex {
+  name: String!
+  modelsIds: [ID!]
+  models: [CodexmodelsModel!]
+}
+
+# A connection to a list of items.
+type ModelConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [ModelEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
+}
+
+# An edge in a connection.
+type ModelEdge {
+  # The item at the end of the edge.
+  node: Model!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input ModelequipmentItem {
+  pointCost: String!
+  equipableModelsIds: [ID!]
+  equipableModels: [ItemequipableModelsModel!]
+  inOptionsIds: [ID!]
+  inOptions: [IteminOptionsWargearOption!]
+}
+
+input ModelFilter {
+  # Logical AND on all given filters.
+  AND: [ModelFilter!]
+
+  # Logical OR on all given filters.
+  OR: [ModelFilter!]
+  armorSave: Int
+
+  # All values that are not equal to given value.
+  armorSave_not: Int
+
+  # All values that are contained in given list.
+  armorSave_in: [Int!]
+
+  # All values that are not contained in given list.
+  armorSave_not_in: [Int!]
+
+  # All values less than the given value.
+  armorSave_lt: Int
+
+  # All values less than or equal the given value.
+  armorSave_lte: Int
+
+  # All values greater than the given value.
+  armorSave_gt: Int
+
+  # All values greater than or equal the given value.
+  armorSave_gte: Int
+  attacks: Int
+
+  # All values that are not equal to given value.
+  attacks_not: Int
+
+  # All values that are contained in given list.
+  attacks_in: [Int!]
+
+  # All values that are not contained in given list.
+  attacks_not_in: [Int!]
+
+  # All values less than the given value.
+  attacks_lt: Int
+
+  # All values less than or equal the given value.
+  attacks_lte: Int
+
+  # All values greater than the given value.
+  attacks_gt: Int
+
+  # All values greater than or equal the given value.
+  attacks_gte: Int
+  ballisticSkill: String
+
+  # All values that are not equal to given value.
+  ballisticSkill_not: String
+
+  # All values that are contained in given list.
+  ballisticSkill_in: [String!]
+
+  # All values that are not contained in given list.
+  ballisticSkill_not_in: [String!]
+
+  # All values less than the given value.
+  ballisticSkill_lt: String
+
+  # All values less than or equal the given value.
+  ballisticSkill_lte: String
+
+  # All values greater than the given value.
+  ballisticSkill_gt: String
+
+  # All values greater than or equal the given value.
+  ballisticSkill_gte: String
+
+  # All values containing the given string.
+  ballisticSkill_contains: String
+
+  # All values not containing the given string.
+  ballisticSkill_not_contains: String
+
+  # All values starting with the given string.
+  ballisticSkill_starts_with: String
+
+  # All values not starting with the given string.
+  ballisticSkill_not_starts_with: String
+
+  # All values ending with the given string.
+  ballisticSkill_ends_with: String
+
+  # All values not ending with the given string.
+  ballisticSkill_not_ends_with: String
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+  invulnerableSave: Int
+
+  # All values that are not equal to given value.
+  invulnerableSave_not: Int
+
+  # All values that are contained in given list.
+  invulnerableSave_in: [Int!]
+
+  # All values that are not contained in given list.
+  invulnerableSave_not_in: [Int!]
+
+  # All values less than the given value.
+  invulnerableSave_lt: Int
+
+  # All values less than or equal the given value.
+  invulnerableSave_lte: Int
+
+  # All values greater than the given value.
+  invulnerableSave_gt: Int
+
+  # All values greater than or equal the given value.
+  invulnerableSave_gte: Int
+  leadership: Int
+
+  # All values that are not equal to given value.
+  leadership_not: Int
+
+  # All values that are contained in given list.
+  leadership_in: [Int!]
+
+  # All values that are not contained in given list.
+  leadership_not_in: [Int!]
+
+  # All values less than the given value.
+  leadership_lt: Int
+
+  # All values less than or equal the given value.
+  leadership_lte: Int
+
+  # All values greater than the given value.
+  leadership_gt: Int
+
+  # All values greater than or equal the given value.
+  leadership_gte: Int
+  movement: String
+
+  # All values that are not equal to given value.
+  movement_not: String
+
+  # All values that are contained in given list.
+  movement_in: [String!]
+
+  # All values that are not contained in given list.
+  movement_not_in: [String!]
+
+  # All values less than the given value.
+  movement_lt: String
+
+  # All values less than or equal the given value.
+  movement_lte: String
+
+  # All values greater than the given value.
+  movement_gt: String
+
+  # All values greater than or equal the given value.
+  movement_gte: String
+
+  # All values containing the given string.
+  movement_contains: String
+
+  # All values not containing the given string.
+  movement_not_contains: String
+
+  # All values starting with the given string.
+  movement_starts_with: String
+
+  # All values not starting with the given string.
+  movement_not_starts_with: String
+
+  # All values ending with the given string.
+  movement_ends_with: String
+
+  # All values not ending with the given string.
+  movement_not_ends_with: String
+  pointCost: Int
+
+  # All values that are not equal to given value.
+  pointCost_not: Int
+
+  # All values that are contained in given list.
+  pointCost_in: [Int!]
+
+  # All values that are not contained in given list.
+  pointCost_not_in: [Int!]
+
+  # All values less than the given value.
+  pointCost_lt: Int
+
+  # All values less than or equal the given value.
+  pointCost_lte: Int
+
+  # All values greater than the given value.
+  pointCost_gt: Int
+
+  # All values greater than or equal the given value.
+  pointCost_gte: Int
+  powerLevelCost: Int
+
+  # All values that are not equal to given value.
+  powerLevelCost_not: Int
+
+  # All values that are contained in given list.
+  powerLevelCost_in: [Int!]
+
+  # All values that are not contained in given list.
+  powerLevelCost_not_in: [Int!]
+
+  # All values less than the given value.
+  powerLevelCost_lt: Int
+
+  # All values less than or equal the given value.
+  powerLevelCost_lte: Int
+
+  # All values greater than the given value.
+  powerLevelCost_gt: Int
+
+  # All values greater than or equal the given value.
+  powerLevelCost_gte: Int
+  strength: String
+
+  # All values that are not equal to given value.
+  strength_not: String
+
+  # All values that are contained in given list.
+  strength_in: [String!]
+
+  # All values that are not contained in given list.
+  strength_not_in: [String!]
+
+  # All values less than the given value.
+  strength_lt: String
+
+  # All values less than or equal the given value.
+  strength_lte: String
+
+  # All values greater than the given value.
+  strength_gt: String
+
+  # All values greater than or equal the given value.
+  strength_gte: String
+
+  # All values containing the given string.
+  strength_contains: String
+
+  # All values not containing the given string.
+  strength_not_contains: String
+
+  # All values starting with the given string.
+  strength_starts_with: String
+
+  # All values not starting with the given string.
+  strength_not_starts_with: String
+
+  # All values ending with the given string.
+  strength_ends_with: String
+
+  # All values not ending with the given string.
+  strength_not_ends_with: String
+  toughness: String
+
+  # All values that are not equal to given value.
+  toughness_not: String
+
+  # All values that are contained in given list.
+  toughness_in: [String!]
+
+  # All values that are not contained in given list.
+  toughness_not_in: [String!]
+
+  # All values less than the given value.
+  toughness_lt: String
+
+  # All values less than or equal the given value.
+  toughness_lte: String
+
+  # All values greater than the given value.
+  toughness_gt: String
+
+  # All values greater than or equal the given value.
+  toughness_gte: String
+
+  # All values containing the given string.
+  toughness_contains: String
+
+  # All values not containing the given string.
+  toughness_not_contains: String
+
+  # All values starting with the given string.
+  toughness_starts_with: String
+
+  # All values not starting with the given string.
+  toughness_not_starts_with: String
+
+  # All values ending with the given string.
+  toughness_ends_with: String
+
+  # All values not ending with the given string.
+  toughness_not_ends_with: String
+  type: UnitType
+
+  # All values that are not equal to given value.
+  type_not: UnitType
+
+  # All values that are contained in given list.
+  type_in: [UnitType!]
+
+  # All values that are not contained in given list.
+  type_not_in: [UnitType!]
+  weaponSkill: String
+
+  # All values that are not equal to given value.
+  weaponSkill_not: String
+
+  # All values that are contained in given list.
+  weaponSkill_in: [String!]
+
+  # All values that are not contained in given list.
+  weaponSkill_not_in: [String!]
+
+  # All values less than the given value.
+  weaponSkill_lt: String
+
+  # All values less than or equal the given value.
+  weaponSkill_lte: String
+
+  # All values greater than the given value.
+  weaponSkill_gt: String
+
+  # All values greater than or equal the given value.
+  weaponSkill_gte: String
+
+  # All values containing the given string.
+  weaponSkill_contains: String
+
+  # All values not containing the given string.
+  weaponSkill_not_contains: String
+
+  # All values starting with the given string.
+  weaponSkill_starts_with: String
+
+  # All values not starting with the given string.
+  weaponSkill_not_starts_with: String
+
+  # All values ending with the given string.
+  weaponSkill_ends_with: String
+
+  # All values not ending with the given string.
+  weaponSkill_not_ends_with: String
+  wounds: Int
+
+  # All values that are not equal to given value.
+  wounds_not: Int
+
+  # All values that are contained in given list.
+  wounds_in: [Int!]
+
+  # All values that are not contained in given list.
+  wounds_not_in: [Int!]
+
+  # All values less than the given value.
+  wounds_lt: Int
+
+  # All values less than or equal the given value.
+  wounds_lte: Int
+
+  # All values greater than the given value.
+  wounds_gt: Int
+
+  # All values greater than or equal the given value.
+  wounds_gte: Int
+  armyUnits_every: ArmyDetachmentUnitFilter
+  armyUnits_some: ArmyDetachmentUnitFilter
+  armyUnits_none: ArmyDetachmentUnitFilter
+  codex: CodexFilter
+  equipment_every: ItemFilter
+  equipment_some: ItemFilter
+  equipment_none: ItemFilter
+  inUnits_every: UnitFilter
+  inUnits_some: UnitFilter
+  inUnits_none: UnitFilter
+  specialRules_every: SpecialRuleFilter
+  specialRules_some: SpecialRuleFilter
+  specialRules_none: SpecialRuleFilter
+  wargear_every: WargearOptionFilter
+  wargear_some: WargearOptionFilter
+  wargear_none: WargearOptionFilter
+}
+
+input ModelinUnitsUnit {
+  inArmyUnitsIds: [ID!]
+  inArmyUnits: [UnitinArmyUnitsArmyDetachmentUnit!]
+  modelsIds: [ID!]
+  models: [UnitmodelsModel!]
+}
+
+enum ModelOrderBy {
+  armorSave_ASC
+  armorSave_DESC
+  attacks_ASC
+  attacks_DESC
+  ballisticSkill_ASC
+  ballisticSkill_DESC
+  id_ASC
+  id_DESC
+  invulnerableSave_ASC
+  invulnerableSave_DESC
+  leadership_ASC
+  leadership_DESC
+  movement_ASC
+  movement_DESC
+  pointCost_ASC
+  pointCost_DESC
+  powerLevelCost_ASC
+  powerLevelCost_DESC
+  strength_ASC
+  strength_DESC
+  toughness_ASC
+  toughness_DESC
+  type_ASC
+  type_DESC
+  weaponSkill_ASC
+  weaponSkill_DESC
+  wounds_ASC
+  wounds_DESC
+}
+
+input ModelspecialRulesSpecialRule {
+  description: String!
+  name: String!
+  posessedByIds: [ID!]
+  posessedBy: [SpecialRuleposessedByModel!]
+}
+
+input ModelwargearWargearOption {
+  amount: Int!
+  itemsIds: [ID!]
+  items: [WargearOptionitemsItem!]
+}
+
+type Mutation {
+  createArmy(input: CreateArmyInput!): CreateArmyPayload
+  createArmyDetachment(input: CreateArmyDetachmentInput!): CreateArmyDetachmentPayload
+  createArmyDetachmentUnit(input: CreateArmyDetachmentUnitInput!): CreateArmyDetachmentUnitPayload
+  createCodex(input: CreateCodexInput!): CreateCodexPayload
+  createDetachment(input: CreateDetachmentInput!): CreateDetachmentPayload
+  createDetachmentUnit(input: CreateDetachmentUnitInput!): CreateDetachmentUnitPayload
+  createFile(input: CreateFileInput!): CreateFilePayload
+  createItem(input: CreateItemInput!): CreateItemPayload
+  createModel(input: CreateModelInput!): CreateModelPayload
+  createSpecialRule(input: CreateSpecialRuleInput!): CreateSpecialRulePayload
+  createUnit(input: CreateUnitInput!): CreateUnitPayload
+  createWargearOption(input: CreateWargearOptionInput!): CreateWargearOptionPayload
+  updateArmy(input: UpdateArmyInput!): UpdateArmyPayload
+  updateArmyDetachment(input: UpdateArmyDetachmentInput!): UpdateArmyDetachmentPayload
+  updateArmyDetachmentUnit(input: UpdateArmyDetachmentUnitInput!): UpdateArmyDetachmentUnitPayload
+  updateCodex(input: UpdateCodexInput!): UpdateCodexPayload
+  updateDetachment(input: UpdateDetachmentInput!): UpdateDetachmentPayload
+  updateDetachmentUnit(input: UpdateDetachmentUnitInput!): UpdateDetachmentUnitPayload
+  updateFile(input: UpdateFileInput!): UpdateFilePayload
+  updateItem(input: UpdateItemInput!): UpdateItemPayload
+  updateModel(input: UpdateModelInput!): UpdateModelPayload
+  updateSpecialRule(input: UpdateSpecialRuleInput!): UpdateSpecialRulePayload
+  updateUnit(input: UpdateUnitInput!): UpdateUnitPayload
+  updateUser(input: UpdateUserInput!): UpdateUserPayload
+  updateWargearOption(input: UpdateWargearOptionInput!): UpdateWargearOptionPayload
+  updateOrCreateArmy(input: UpdateOrCreateArmyInput!): UpdateOrCreateArmyPayload
+  updateOrCreateArmyDetachment(input: UpdateOrCreateArmyDetachmentInput!): UpdateOrCreateArmyDetachmentPayload
+  updateOrCreateArmyDetachmentUnit(input: UpdateOrCreateArmyDetachmentUnitInput!): UpdateOrCreateArmyDetachmentUnitPayload
+  updateOrCreateCodex(input: UpdateOrCreateCodexInput!): UpdateOrCreateCodexPayload
+  updateOrCreateDetachment(input: UpdateOrCreateDetachmentInput!): UpdateOrCreateDetachmentPayload
+  updateOrCreateDetachmentUnit(input: UpdateOrCreateDetachmentUnitInput!): UpdateOrCreateDetachmentUnitPayload
+  updateOrCreateFile(input: UpdateOrCreateFileInput!): UpdateOrCreateFilePayload
+  updateOrCreateItem(input: UpdateOrCreateItemInput!): UpdateOrCreateItemPayload
+  updateOrCreateModel(input: UpdateOrCreateModelInput!): UpdateOrCreateModelPayload
+  updateOrCreateSpecialRule(input: UpdateOrCreateSpecialRuleInput!): UpdateOrCreateSpecialRulePayload
+  updateOrCreateUnit(input: UpdateOrCreateUnitInput!): UpdateOrCreateUnitPayload
+  updateOrCreateUser(input: UpdateOrCreateUserInput!): UpdateOrCreateUserPayload
+  updateOrCreateWargearOption(input: UpdateOrCreateWargearOptionInput!): UpdateOrCreateWargearOptionPayload
+  deleteArmy(input: DeleteArmyInput!): DeleteArmyPayload
+  deleteArmyDetachment(input: DeleteArmyDetachmentInput!): DeleteArmyDetachmentPayload
+  deleteArmyDetachmentUnit(input: DeleteArmyDetachmentUnitInput!): DeleteArmyDetachmentUnitPayload
+  deleteCodex(input: DeleteCodexInput!): DeleteCodexPayload
+  deleteDetachment(input: DeleteDetachmentInput!): DeleteDetachmentPayload
+  deleteDetachmentUnit(input: DeleteDetachmentUnitInput!): DeleteDetachmentUnitPayload
+  deleteFile(input: DeleteFileInput!): DeleteFilePayload
+  deleteItem(input: DeleteItemInput!): DeleteItemPayload
+  deleteModel(input: DeleteModelInput!): DeleteModelPayload
+  deleteSpecialRule(input: DeleteSpecialRuleInput!): DeleteSpecialRulePayload
+  deleteUnit(input: DeleteUnitInput!): DeleteUnitPayload
+  deleteUser(input: DeleteUserInput!): DeleteUserPayload
+  deleteWargearOption(input: DeleteWargearOptionInput!): DeleteWargearOptionPayload
+  addToArmyDetachmentOnDetachment(input: AddToArmyDetachmentOnDetachmentArmyDetachmentInput!): AddToArmyDetachmentOnDetachmentPayload
+  addToArmyOnArmyDetachment(input: AddToArmyOnArmyDetachmentArmyInput!): AddToArmyOnArmyDetachmentPayload
+  addToArmyUnitOnModel(input: AddToArmyUnitOnModelArmyDetachmentUnitInput!): AddToArmyUnitOnModelPayload
+  addToArmyUnitOnUnit(input: AddToArmyUnitOnUnitArmyDetachmentUnitInput!): AddToArmyUnitOnUnitPayload
+  addToDetachmentOnDetachmentUnit(input: AddToDetachmentOnDetachmentUnitDetachmentInput!): AddToDetachmentOnDetachmentUnitPayload
+  addToEquipmentOnModel(input: AddToEquipmentOnModelModelInput!): AddToEquipmentOnModelPayload
+  addToItemsOnWargear(input: AddToItemsOnWargearWargearOptionInput!): AddToItemsOnWargearPayload
+  addToModelOnSpecialRule(input: AddToModelOnSpecialRuleModelInput!): AddToModelOnSpecialRulePayload
+  addToModelOnWargear(input: AddToModelOnWargearModelInput!): AddToModelOnWargearPayload
+  addToModelsOnCodex(input: AddToModelsOnCodexCodexInput!): AddToModelsOnCodexPayload
+  addToUnitOnModel(input: AddToUnitOnModelModelInput!): AddToUnitOnModelPayload
+  removeFromArmyDetachmentOnDetachment(input: RemoveFromArmyDetachmentOnDetachmentArmyDetachmentInput!): RemoveFromArmyDetachmentOnDetachmentPayload
+  removeFromArmyOnArmyDetachment(input: RemoveFromArmyOnArmyDetachmentArmyInput!): RemoveFromArmyOnArmyDetachmentPayload
+  removeFromArmyUnitOnModel(input: RemoveFromArmyUnitOnModelArmyDetachmentUnitInput!): RemoveFromArmyUnitOnModelPayload
+  removeFromArmyUnitOnUnit(input: RemoveFromArmyUnitOnUnitArmyDetachmentUnitInput!): RemoveFromArmyUnitOnUnitPayload
+  removeFromDetachmentOnDetachmentUnit(input: RemoveFromDetachmentOnDetachmentUnitDetachmentInput!): RemoveFromDetachmentOnDetachmentUnitPayload
+  removeFromEquipmentOnModel(input: RemoveFromEquipmentOnModelModelInput!): RemoveFromEquipmentOnModelPayload
+  removeFromItemsOnWargear(input: RemoveFromItemsOnWargearWargearOptionInput!): RemoveFromItemsOnWargearPayload
+  removeFromModelOnSpecialRule(input: RemoveFromModelOnSpecialRuleModelInput!): RemoveFromModelOnSpecialRulePayload
+  removeFromUnitOnModel(input: RemoveFromUnitOnModelModelInput!): RemoveFromUnitOnModelPayload
+  createUser(input: SignupUserInput!): CreateUserPayload!
+}
+
+# An object with an ID
+interface Node {
+  # The id of the object.
+  id: ID!
+}
+
+# Information about pagination in a connection.
+type PageInfo {
+  # When paginating forwards, are there more items?
+  hasNextPage: Boolean!
+
+  # When paginating backwards, are there more items?
+  hasPreviousPage: Boolean!
+
+  # When paginating backwards, the cursor to continue.
+  startCursor: String
+
+  # When paginating forwards, the cursor to continue.
+  endCursor: String
+}
+
+type Query {
+  viewer: Viewer!
+
+  # Fetches an object given its ID
+  node(
+    # The ID of an object
+    id: ID!
+  ): Node
+}
+
+input RemoveFromArmyDetachmentOnDetachmentArmyDetachmentInput {
+  kindDetachmentId: ID!
+  armyDetachmentsArmyDetachmentId: ID!
+  clientMutationId: String!
+}
+
+type RemoveFromArmyDetachmentOnDetachmentPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  armyDetachmentsArmyDetachment: ArmyDetachment
+  kindDetachment: Detachment
+  armyDetachmentsArmyDetachmentEdge: ArmyDetachmentEdge
+  kindDetachmentEdge: DetachmentEdge
+}
+
+input RemoveFromArmyOnArmyDetachmentArmyInput {
+  detachmentsArmyDetachmentId: ID!
+  inArmiesArmyId: ID!
+  clientMutationId: String!
+}
+
+type RemoveFromArmyOnArmyDetachmentPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  inArmiesArmy: Army
+  detachmentsArmyDetachment: ArmyDetachment
+  inArmiesArmyEdge: ArmyEdge
+  detachmentsArmyDetachmentEdge: ArmyDetachmentEdge
+}
+
+input RemoveFromArmyUnitOnModelArmyDetachmentUnitInput {
+  modelsModelId: ID!
+  armyUnitsArmyDetachmentUnitId: ID!
+  clientMutationId: String!
+}
+
+type RemoveFromArmyUnitOnModelPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  armyUnitsArmyDetachmentUnit: ArmyDetachmentUnit
+  modelsModel: Model
+  armyUnitsArmyDetachmentUnitEdge: ArmyDetachmentUnitEdge
+  modelsModelEdge: ModelEdge
+}
+
+input RemoveFromArmyUnitOnUnitArmyDetachmentUnitInput {
+  unitUnitId: ID!
+  inArmyUnitsArmyDetachmentUnitId: ID!
+  clientMutationId: String!
+}
+
+type RemoveFromArmyUnitOnUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  inArmyUnitsArmyDetachmentUnit: ArmyDetachmentUnit
+  unitUnit: Unit
+  inArmyUnitsArmyDetachmentUnitEdge: ArmyDetachmentUnitEdge
+  unitUnitEdge: UnitEdge
+}
+
+input RemoveFromDetachmentOnDetachmentUnitDetachmentInput {
+  optionsDetachmentUnitId: ID!
+  detachmentsDetachmentId: ID!
+  clientMutationId: String!
+}
+
+type RemoveFromDetachmentOnDetachmentUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  detachmentsDetachment: Detachment
+  optionsDetachmentUnit: DetachmentUnit
+  detachmentsDetachmentEdge: DetachmentEdge
+  optionsDetachmentUnitEdge: DetachmentUnitEdge
+}
+
+input RemoveFromEquipmentOnModelModelInput {
+  equipmentItemId: ID!
+  equipableModelsModelId: ID!
+  clientMutationId: String!
+}
+
+type RemoveFromEquipmentOnModelPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  equipableModelsModel: Model
+  equipmentItem: Item
+  equipableModelsModelEdge: ModelEdge
+  equipmentItemEdge: ItemEdge
+}
+
+type RemoveFromItemsOnWargearPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  inOptionsWargearOption: WargearOption
+  itemsItem: Item
+  inOptionsWargearOptionEdge: WargearOptionEdge
+  itemsItemEdge: ItemEdge
+}
+
+input RemoveFromItemsOnWargearWargearOptionInput {
+  itemsItemId: ID!
+  inOptionsWargearOptionId: ID!
+  clientMutationId: String!
+}
+
+input RemoveFromModelOnSpecialRuleModelInput {
+  specialRulesSpecialRuleId: ID!
+  posessedByModelId: ID!
+  clientMutationId: String!
+}
+
+type RemoveFromModelOnSpecialRulePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  posessedByModel: Model
+  specialRulesSpecialRule: SpecialRule
+  posessedByModelEdge: ModelEdge
+  specialRulesSpecialRuleEdge: SpecialRuleEdge
+}
+
+input RemoveFromUnitOnModelModelInput {
+  inUnitsUnitId: ID!
+  modelsModelId: ID!
+  clientMutationId: String!
+}
+
+type RemoveFromUnitOnModelPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  modelsModel: Model
+  inUnitsUnit: Unit
+  modelsModelEdge: ModelEdge
+  inUnitsUnitEdge: UnitEdge
+}
+
+input SignupUserInput {
+  clientMutationId: String!
+}
+
+type SpecialRule implements Node {
+  description: String!
+  id: ID!
+  name: String!
+  posessedBy(filter: ModelFilter, orderBy: ModelOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ModelConnection
+}
+
+# A connection to a list of items.
+type SpecialRuleConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [SpecialRuleEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
+}
+
+# An edge in a connection.
+type SpecialRuleEdge {
+  # The item at the end of the edge.
+  node: SpecialRule!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input SpecialRuleFilter {
+  # Logical AND on all given filters.
+  AND: [SpecialRuleFilter!]
+
+  # Logical OR on all given filters.
+  OR: [SpecialRuleFilter!]
+  description: String
+
+  # All values that are not equal to given value.
+  description_not: String
+
+  # All values that are contained in given list.
+  description_in: [String!]
+
+  # All values that are not contained in given list.
+  description_not_in: [String!]
+
+  # All values less than the given value.
+  description_lt: String
+
+  # All values less than or equal the given value.
+  description_lte: String
+
+  # All values greater than the given value.
+  description_gt: String
+
+  # All values greater than or equal the given value.
+  description_gte: String
+
+  # All values containing the given string.
+  description_contains: String
+
+  # All values not containing the given string.
+  description_not_contains: String
+
+  # All values starting with the given string.
+  description_starts_with: String
+
+  # All values not starting with the given string.
+  description_not_starts_with: String
+
+  # All values ending with the given string.
+  description_ends_with: String
+
+  # All values not ending with the given string.
+  description_not_ends_with: String
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+  name: String
+
+  # All values that are not equal to given value.
+  name_not: String
+
+  # All values that are contained in given list.
+  name_in: [String!]
+
+  # All values that are not contained in given list.
+  name_not_in: [String!]
+
+  # All values less than the given value.
+  name_lt: String
+
+  # All values less than or equal the given value.
+  name_lte: String
+
+  # All values greater than the given value.
+  name_gt: String
+
+  # All values greater than or equal the given value.
+  name_gte: String
+
+  # All values containing the given string.
+  name_contains: String
+
+  # All values not containing the given string.
+  name_not_contains: String
+
+  # All values starting with the given string.
+  name_starts_with: String
+
+  # All values not starting with the given string.
+  name_not_starts_with: String
+
+  # All values ending with the given string.
+  name_ends_with: String
+
+  # All values not ending with the given string.
+  name_not_ends_with: String
+  posessedBy_every: ModelFilter
+  posessedBy_some: ModelFilter
+  posessedBy_none: ModelFilter
+}
+
+enum SpecialRuleOrderBy {
+  description_ASC
+  description_DESC
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+}
+
+input SpecialRuleposessedByModel {
+  armorSave: Int!
+  attacks: Int!
+  ballisticSkill: String!
+  factions: [String!]!
+  invulnerableSave: Int!
+  keywords: [String!]!
+  leadership: Int!
+  movement: String!
+  pointCost: Int!
+  powerLevelCost: Int!
+  strength: String!
+  toughness: String!
+  type: UnitType!
+  weaponSkill: String!
+  wounds: Int!
+  codexId: ID
+  codex: ModelcodexCodex
+  armyUnitsIds: [ID!]
+  armyUnits: [ModelarmyUnitsArmyDetachmentUnit!]
+  equipmentIds: [ID!]
+  equipment: [ModelequipmentItem!]
+  inUnitsIds: [ID!]
+  inUnits: [ModelinUnitsUnit!]
+  specialRulesIds: [ID!]
+  specialRules: [ModelspecialRulesSpecialRule!]
+  wargearIds: [ID!]
+  wargear: [ModelwargearWargearOption!]
+}
+
+type Unit implements Node {
+  id: ID!
+  inArmyUnits(filter: ArmyDetachmentUnitFilter, orderBy: ArmyDetachmentUnitOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ArmyDetachmentUnitConnection
+  models(filter: ModelFilter, orderBy: ModelOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ModelConnection
+}
+
+# A connection to a list of items.
+type UnitConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [UnitEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
+}
+
+# An edge in a connection.
+type UnitEdge {
+  # The item at the end of the edge.
+  node: Unit!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input UnitFilter {
+  # Logical AND on all given filters.
+  AND: [UnitFilter!]
+
+  # Logical OR on all given filters.
+  OR: [UnitFilter!]
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+  inArmyUnits_every: ArmyDetachmentUnitFilter
+  inArmyUnits_some: ArmyDetachmentUnitFilter
+  inArmyUnits_none: ArmyDetachmentUnitFilter
+  models_every: ModelFilter
+  models_some: ModelFilter
+  models_none: ModelFilter
+}
+
+input UnitinArmyUnitsArmyDetachmentUnit {
+  modelsIds: [ID!]
+  models: [ArmyDetachmentUnitmodelsModel!]
+}
+
+input UnitmodelsModel {
+  armorSave: Int!
+  attacks: Int!
+  ballisticSkill: String!
+  factions: [String!]!
+  invulnerableSave: Int!
+  keywords: [String!]!
+  leadership: Int!
+  movement: String!
+  pointCost: Int!
+  powerLevelCost: Int!
+  strength: String!
+  toughness: String!
+  type: UnitType!
+  weaponSkill: String!
+  wounds: Int!
+  codexId: ID
+  codex: ModelcodexCodex
+  armyUnitsIds: [ID!]
+  armyUnits: [ModelarmyUnitsArmyDetachmentUnit!]
+  equipmentIds: [ID!]
+  equipment: [ModelequipmentItem!]
+  inUnitsIds: [ID!]
+  inUnits: [ModelinUnitsUnit!]
+  specialRulesIds: [ID!]
+  specialRules: [ModelspecialRulesSpecialRule!]
+  wargearIds: [ID!]
+  wargear: [ModelwargearWargearOption!]
+}
+
+enum UnitOrderBy {
+  id_ASC
+  id_DESC
 }
 
 enum UnitType {
@@ -127,19 +3110,837 @@ enum UnitType {
   Dedicated_Transport
 }
 
-type File implements Node {
-  contentType: String!
-  createdAt: DateTime!
-  id: ID! @isUnique
-  name: String!
-  secret: String! @isUnique
-  size: Int!
-  updatedAt: DateTime!
-  url: String! @isUnique
+input UpdateArmy {
+  id: ID!
+  name: String
+  detachmentsIds: [ID!]
+  detachments: [ArmydetachmentsArmyDetachment!]
+}
+
+input UpdateArmyDetachment {
+  id: ID!
+  kindId: ID
+  kind: ArmyDetachmentkindDetachment
+  inArmiesIds: [ID!]
+  inArmies: [ArmyDetachmentinArmiesArmy!]
+}
+
+input UpdateArmyDetachmentInput {
+  id: ID!
+  kindId: ID
+  kind: ArmyDetachmentkindDetachment
+  inArmiesIds: [ID!]
+  inArmies: [ArmyDetachmentinArmiesArmy!]
+  clientMutationId: String!
+}
+
+type UpdateArmyDetachmentPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  armyDetachment: ArmyDetachment
+  edge: ArmyDetachmentEdge
+  kind: Detachment
+}
+
+input UpdateArmyDetachmentUnit {
+  id: ID!
+  unitId: ID
+  unit: ArmyDetachmentUnitunitUnit
+  modelsIds: [ID!]
+  models: [ArmyDetachmentUnitmodelsModel!]
+}
+
+input UpdateArmyDetachmentUnitInput {
+  id: ID!
+  unitId: ID
+  unit: ArmyDetachmentUnitunitUnit
+  modelsIds: [ID!]
+  models: [ArmyDetachmentUnitmodelsModel!]
+  clientMutationId: String!
+}
+
+type UpdateArmyDetachmentUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  armyDetachmentUnit: ArmyDetachmentUnit
+  edge: ArmyDetachmentUnitEdge
+  unit: Unit
+}
+
+input UpdateArmyInput {
+  id: ID!
+  name: String
+  detachmentsIds: [ID!]
+  detachments: [ArmydetachmentsArmyDetachment!]
+  clientMutationId: String!
+}
+
+type UpdateArmyPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  army: Army
+  edge: ArmyEdge
+}
+
+input UpdateCodex {
+  id: ID!
+  name: String
+  modelsIds: [ID!]
+  models: [CodexmodelsModel!]
+}
+
+input UpdateCodexInput {
+  id: ID!
+  name: String
+  modelsIds: [ID!]
+  models: [CodexmodelsModel!]
+  clientMutationId: String!
+}
+
+type UpdateCodexPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  codex: Codex
+  edge: CodexEdge
+}
+
+input UpdateDetachment {
+  cpModifier: Int
+  id: ID!
+  restriction: DetachmentRestriction
+  type: DetachmentType
+  armyDetachmentsIds: [ID!]
+  armyDetachments: [DetachmentarmyDetachmentsArmyDetachment!]
+  optionsIds: [ID!]
+  options: [DetachmentoptionsDetachmentUnit!]
+}
+
+input UpdateDetachmentInput {
+  cpModifier: Int
+  id: ID!
+  restriction: DetachmentRestriction
+  type: DetachmentType
+  armyDetachmentsIds: [ID!]
+  armyDetachments: [DetachmentarmyDetachmentsArmyDetachment!]
+  optionsIds: [ID!]
+  options: [DetachmentoptionsDetachmentUnit!]
+  clientMutationId: String!
+}
+
+type UpdateDetachmentPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  detachment: Detachment
+  edge: DetachmentEdge
+}
+
+input UpdateDetachmentUnit {
+  id: ID!
+  maxAmount: Int
+  minAmount: Int
+  unitType: UnitType
+  detachmentsIds: [ID!]
+  detachments: [DetachmentUnitdetachmentsDetachment!]
+}
+
+input UpdateDetachmentUnitInput {
+  id: ID!
+  maxAmount: Int
+  minAmount: Int
+  unitType: UnitType
+  detachmentsIds: [ID!]
+  detachments: [DetachmentUnitdetachmentsDetachment!]
+  clientMutationId: String!
+}
+
+type UpdateDetachmentUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  detachmentUnit: DetachmentUnit
+  edge: DetachmentUnitEdge
+}
+
+input UpdateFile {
+  id: ID!
+  name: String
+}
+
+input UpdateFileInput {
+  id: ID!
+  name: String
+  clientMutationId: String!
+}
+
+type UpdateFilePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  file: File
+  edge: FileEdge
+}
+
+input UpdateItem {
+  id: ID!
+  pointCost: String
+  equipableModelsIds: [ID!]
+  equipableModels: [ItemequipableModelsModel!]
+  inOptionsIds: [ID!]
+  inOptions: [IteminOptionsWargearOption!]
+}
+
+input UpdateItemInput {
+  id: ID!
+  pointCost: String
+  equipableModelsIds: [ID!]
+  equipableModels: [ItemequipableModelsModel!]
+  inOptionsIds: [ID!]
+  inOptions: [IteminOptionsWargearOption!]
+  clientMutationId: String!
+}
+
+type UpdateItemPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  item: Item
+  edge: ItemEdge
+}
+
+input UpdateModel {
+  armorSave: Int
+  attacks: Int
+  ballisticSkill: String
+  factions: [String!]
+  id: ID!
+  invulnerableSave: Int
+  keywords: [String!]
+  leadership: Int
+  movement: String
+  pointCost: Int
+  powerLevelCost: Int
+  strength: String
+  toughness: String
+  type: UnitType
+  weaponSkill: String
+  wounds: Int
+  codexId: ID
+  codex: ModelcodexCodex
+  armyUnitsIds: [ID!]
+  armyUnits: [ModelarmyUnitsArmyDetachmentUnit!]
+  equipmentIds: [ID!]
+  equipment: [ModelequipmentItem!]
+  inUnitsIds: [ID!]
+  inUnits: [ModelinUnitsUnit!]
+  specialRulesIds: [ID!]
+  specialRules: [ModelspecialRulesSpecialRule!]
+  wargearIds: [ID!]
+  wargear: [ModelwargearWargearOption!]
+}
+
+input UpdateModelInput {
+  armorSave: Int
+  attacks: Int
+  ballisticSkill: String
+  factions: [String!]
+  id: ID!
+  invulnerableSave: Int
+  keywords: [String!]
+  leadership: Int
+  movement: String
+  pointCost: Int
+  powerLevelCost: Int
+  strength: String
+  toughness: String
+  type: UnitType
+  weaponSkill: String
+  wounds: Int
+  codexId: ID
+  codex: ModelcodexCodex
+  armyUnitsIds: [ID!]
+  armyUnits: [ModelarmyUnitsArmyDetachmentUnit!]
+  equipmentIds: [ID!]
+  equipment: [ModelequipmentItem!]
+  inUnitsIds: [ID!]
+  inUnits: [ModelinUnitsUnit!]
+  specialRulesIds: [ID!]
+  specialRules: [ModelspecialRulesSpecialRule!]
+  wargearIds: [ID!]
+  wargear: [ModelwargearWargearOption!]
+  clientMutationId: String!
+}
+
+type UpdateModelPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  model: Model
+  edge: ModelEdge
+  codex: Codex
+}
+
+input UpdateOrCreateArmyDetachmentInput {
+  update: UpdateArmyDetachment!
+  create: CreateArmyDetachment!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateArmyDetachmentPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  armyDetachment: ArmyDetachment
+  edge: ArmyDetachmentEdge
+  kind: Detachment
+}
+
+input UpdateOrCreateArmyDetachmentUnitInput {
+  update: UpdateArmyDetachmentUnit!
+  create: CreateArmyDetachmentUnit!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateArmyDetachmentUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  armyDetachmentUnit: ArmyDetachmentUnit
+  edge: ArmyDetachmentUnitEdge
+  unit: Unit
+}
+
+input UpdateOrCreateArmyInput {
+  update: UpdateArmy!
+  create: CreateArmy!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateArmyPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  army: Army
+  edge: ArmyEdge
+}
+
+input UpdateOrCreateCodexInput {
+  update: UpdateCodex!
+  create: CreateCodex!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateCodexPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  codex: Codex
+  edge: CodexEdge
+}
+
+input UpdateOrCreateDetachmentInput {
+  update: UpdateDetachment!
+  create: CreateDetachment!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateDetachmentPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  detachment: Detachment
+  edge: DetachmentEdge
+}
+
+input UpdateOrCreateDetachmentUnitInput {
+  update: UpdateDetachmentUnit!
+  create: CreateDetachmentUnit!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateDetachmentUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  detachmentUnit: DetachmentUnit
+  edge: DetachmentUnitEdge
+}
+
+input UpdateOrCreateFileInput {
+  update: UpdateFile!
+  create: CreateFile!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateFilePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  file: File
+  edge: FileEdge
+}
+
+input UpdateOrCreateItemInput {
+  update: UpdateItem!
+  create: CreateItem!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateItemPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  item: Item
+  edge: ItemEdge
+}
+
+input UpdateOrCreateModelInput {
+  update: UpdateModel!
+  create: CreateModel!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateModelPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  model: Model
+  edge: ModelEdge
+  codex: Codex
+}
+
+input UpdateOrCreateSpecialRuleInput {
+  update: UpdateSpecialRule!
+  create: CreateSpecialRule!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateSpecialRulePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  specialRule: SpecialRule
+  edge: SpecialRuleEdge
+}
+
+input UpdateOrCreateUnitInput {
+  update: UpdateUnit!
+  create: CreateUnit!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  unit: Unit
+  edge: UnitEdge
+}
+
+input UpdateOrCreateUserInput {
+  update: UpdateUser!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateUserPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  user: User
+  edge: UserEdge
+}
+
+input UpdateOrCreateWargearOptionInput {
+  update: UpdateWargearOption!
+  create: CreateWargearOption!
+  clientMutationId: String!
+}
+
+type UpdateOrCreateWargearOptionPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  wargearOption: WargearOption
+  edge: WargearOptionEdge
+  model: Model
+}
+
+input UpdateSpecialRule {
+  description: String
+  id: ID!
+  name: String
+  posessedByIds: [ID!]
+  posessedBy: [SpecialRuleposessedByModel!]
+}
+
+input UpdateSpecialRuleInput {
+  description: String
+  id: ID!
+  name: String
+  posessedByIds: [ID!]
+  posessedBy: [SpecialRuleposessedByModel!]
+  clientMutationId: String!
+}
+
+type UpdateSpecialRulePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  specialRule: SpecialRule
+  edge: SpecialRuleEdge
+}
+
+input UpdateUnit {
+  id: ID!
+  inArmyUnitsIds: [ID!]
+  inArmyUnits: [UnitinArmyUnitsArmyDetachmentUnit!]
+  modelsIds: [ID!]
+  models: [UnitmodelsModel!]
+}
+
+input UpdateUnitInput {
+  id: ID!
+  inArmyUnitsIds: [ID!]
+  inArmyUnits: [UnitinArmyUnitsArmyDetachmentUnit!]
+  modelsIds: [ID!]
+  models: [UnitmodelsModel!]
+  clientMutationId: String!
+}
+
+type UpdateUnitPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  unit: Unit
+  edge: UnitEdge
+}
+
+input UpdateUser {
+  id: ID!
+}
+
+input UpdateUserInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type UpdateUserPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  user: User
+  edge: UserEdge
+}
+
+input UpdateWargearOption {
+  amount: Int
+  id: ID!
+  modelId: ID
+  model: WargearOptionmodelModel
+  itemsIds: [ID!]
+  items: [WargearOptionitemsItem!]
+}
+
+input UpdateWargearOptionInput {
+  amount: Int
+  id: ID!
+  modelId: ID
+  model: WargearOptionmodelModel
+  itemsIds: [ID!]
+  items: [WargearOptionitemsItem!]
+  clientMutationId: String!
+}
+
+type UpdateWargearOptionPayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  wargearOption: WargearOption
+  edge: WargearOptionEdge
+  model: Model
 }
 
 type User implements Node {
   createdAt: DateTime!
-  id: ID! @isUnique
+  id: ID!
   updatedAt: DateTime!
+}
+
+# A connection to a list of items.
+type UserConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [UserEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
+}
+
+# An edge in a connection.
+type UserEdge {
+  # The item at the end of the edge.
+  node: User!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input UserFilter {
+  # Logical AND on all given filters.
+  AND: [UserFilter!]
+
+  # Logical OR on all given filters.
+  OR: [UserFilter!]
+  createdAt: DateTime
+
+  # All values that are not equal to given value.
+  createdAt_not: DateTime
+
+  # All values that are contained in given list.
+  createdAt_in: [DateTime!]
+
+  # All values that are not contained in given list.
+  createdAt_not_in: [DateTime!]
+
+  # All values less than the given value.
+  createdAt_lt: DateTime
+
+  # All values less than or equal the given value.
+  createdAt_lte: DateTime
+
+  # All values greater than the given value.
+  createdAt_gt: DateTime
+
+  # All values greater than or equal the given value.
+  createdAt_gte: DateTime
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+  updatedAt: DateTime
+
+  # All values that are not equal to given value.
+  updatedAt_not: DateTime
+
+  # All values that are contained in given list.
+  updatedAt_in: [DateTime!]
+
+  # All values that are not contained in given list.
+  updatedAt_not_in: [DateTime!]
+
+  # All values less than the given value.
+  updatedAt_lt: DateTime
+
+  # All values less than or equal the given value.
+  updatedAt_lte: DateTime
+
+  # All values greater than the given value.
+  updatedAt_gt: DateTime
+
+  # All values greater than or equal the given value.
+  updatedAt_gte: DateTime
+}
+
+enum UserOrderBy {
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+# This is the famous Relay viewer object
+type Viewer {
+  allArmies(filter: ArmyFilter, orderBy: ArmyOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ArmyConnection!
+  allArmyDetachments(filter: ArmyDetachmentFilter, orderBy: ArmyDetachmentOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ArmyDetachmentConnection!
+  allArmyDetachmentUnits(filter: ArmyDetachmentUnitFilter, orderBy: ArmyDetachmentUnitOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ArmyDetachmentUnitConnection!
+  allCodices(filter: CodexFilter, orderBy: CodexOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): CodexConnection!
+  allDetachments(filter: DetachmentFilter, orderBy: DetachmentOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): DetachmentConnection!
+  allDetachmentUnits(filter: DetachmentUnitFilter, orderBy: DetachmentUnitOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): DetachmentUnitConnection!
+  allFiles(filter: FileFilter, orderBy: FileOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): FileConnection!
+  allItems(filter: ItemFilter, orderBy: ItemOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ItemConnection!
+  allModels(filter: ModelFilter, orderBy: ModelOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ModelConnection!
+  allSpecialRules(filter: SpecialRuleFilter, orderBy: SpecialRuleOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): SpecialRuleConnection!
+  allUnits(filter: UnitFilter, orderBy: UnitOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): UnitConnection!
+  allUsers(filter: UserFilter, orderBy: UserOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  allWargearOptions(filter: WargearOptionFilter, orderBy: WargearOptionOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): WargearOptionConnection!
+  user: User
+  Army(id: ID): Army
+  ArmyDetachment(id: ID): ArmyDetachment
+  ArmyDetachmentUnit(id: ID): ArmyDetachmentUnit
+  Codex(id: ID): Codex
+  Detachment(id: ID): Detachment
+  DetachmentUnit(id: ID): DetachmentUnit
+  File(id: ID, secret: String, url: String): File
+  Item(id: ID): Item
+  Model(id: ID): Model
+  SpecialRule(id: ID): SpecialRule
+  Unit(id: ID): Unit
+  User(id: ID): User
+  WargearOption(id: ID): WargearOption
+  id: ID!
+}
+
+type WargearOption implements Node {
+  amount: Int!
+  id: ID!
+  items(filter: ItemFilter, orderBy: ItemOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ItemConnection
+  model(filter: ModelFilter): Model!
+}
+
+# A connection to a list of items.
+type WargearOptionConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [WargearOptionEdge]
+
+  # Count of filtered result set without considering pagination arguments
+  count: Int!
+}
+
+# An edge in a connection.
+type WargearOptionEdge {
+  # The item at the end of the edge.
+  node: WargearOption!
+
+  # A cursor for use in pagination.
+  cursor: String!
+}
+
+input WargearOptionFilter {
+  # Logical AND on all given filters.
+  AND: [WargearOptionFilter!]
+
+  # Logical OR on all given filters.
+  OR: [WargearOptionFilter!]
+  amount: Int
+
+  # All values that are not equal to given value.
+  amount_not: Int
+
+  # All values that are contained in given list.
+  amount_in: [Int!]
+
+  # All values that are not contained in given list.
+  amount_not_in: [Int!]
+
+  # All values less than the given value.
+  amount_lt: Int
+
+  # All values less than or equal the given value.
+  amount_lte: Int
+
+  # All values greater than the given value.
+  amount_gt: Int
+
+  # All values greater than or equal the given value.
+  amount_gte: Int
+  id: ID
+
+  # All values that are not equal to given value.
+  id_not: ID
+
+  # All values that are contained in given list.
+  id_in: [ID!]
+
+  # All values that are not contained in given list.
+  id_not_in: [ID!]
+
+  # All values less than the given value.
+  id_lt: ID
+
+  # All values less than or equal the given value.
+  id_lte: ID
+
+  # All values greater than the given value.
+  id_gt: ID
+
+  # All values greater than or equal the given value.
+  id_gte: ID
+
+  # All values containing the given string.
+  id_contains: ID
+
+  # All values not containing the given string.
+  id_not_contains: ID
+
+  # All values starting with the given string.
+  id_starts_with: ID
+
+  # All values not starting with the given string.
+  id_not_starts_with: ID
+
+  # All values ending with the given string.
+  id_ends_with: ID
+
+  # All values not ending with the given string.
+  id_not_ends_with: ID
+  items_every: ItemFilter
+  items_some: ItemFilter
+  items_none: ItemFilter
+  model: ModelFilter
+}
+
+input WargearOptionitemsItem {
+  pointCost: String!
+  equipableModelsIds: [ID!]
+  equipableModels: [ItemequipableModelsModel!]
+  inOptionsIds: [ID!]
+  inOptions: [IteminOptionsWargearOption!]
+}
+
+input WargearOptionmodelModel {
+  armorSave: Int!
+  attacks: Int!
+  ballisticSkill: String!
+  factions: [String!]!
+  invulnerableSave: Int!
+  keywords: [String!]!
+  leadership: Int!
+  movement: String!
+  pointCost: Int!
+  powerLevelCost: Int!
+  strength: String!
+  toughness: String!
+  type: UnitType!
+  weaponSkill: String!
+  wounds: Int!
+  codexId: ID
+  codex: ModelcodexCodex
+  armyUnitsIds: [ID!]
+  armyUnits: [ModelarmyUnitsArmyDetachmentUnit!]
+  equipmentIds: [ID!]
+  equipment: [ModelequipmentItem!]
+  inUnitsIds: [ID!]
+  inUnits: [ModelinUnitsUnit!]
+  specialRulesIds: [ID!]
+  specialRules: [ModelspecialRulesSpecialRule!]
+  wargearIds: [ID!]
+  wargear: [ModelwargearWargearOption!]
+}
+
+enum WargearOptionOrderBy {
+  amount_ASC
+  amount_DESC
+  id_ASC
+  id_DESC
 }

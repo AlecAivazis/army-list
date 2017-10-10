@@ -14,7 +14,7 @@ const App = () => (
                     path="/armies/:id"
                     render={({ match }) => <ArmyDetail id={match.params.id} />}
                 />
-                <Route exact path="/manage" render={() => <ManageData />} />
+                <Route path="/manage" render={() => <ManageData />} />
                 <Route>{() => <Redirect to="/armies" />}</Route>
             </Switch>
         </View>

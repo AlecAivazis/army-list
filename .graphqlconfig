@@ -1,8 +1,8 @@
 {
-  "schemaPath": "schema.graphcool",
+  "schemaPath": "schema.graphql",
   "extensions": {
     "endpoints": {
-      "graphcool": "https://api.graph.cool/relay/v1/army-list"
+      "graphcool": "https://api.graph.cool/relay/v1/bougatsa-battle-tome"
     }
   }
 }

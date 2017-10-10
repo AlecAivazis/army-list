@@ -6,17 +6,11 @@ import { withRouter } from 'react-router-native'
 import { Card, Button } from 'quark-native'
 import { grey2 } from 'quark-native/styles'
 // local imports
-import { App, Title } from '~/components'
+import { App, Title, ButtonLink } from '~/components'
 import Header from './ArmyListHeader'
 import List from './ArmyList'
 import environment from '~/App/environment'
 import { Loader } from '~/quark'
-
-const ButtonLink = withRouter(({ history, to, children, ...unused }) => (
-    <Button {...unused} onPress={() => history.push(to)}>
-        {children}
-    </Button>
-))
 
 export default ({ history }) => (
     <QueryRenderer
