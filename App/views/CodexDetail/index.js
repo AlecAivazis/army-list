@@ -5,9 +5,9 @@ import { View, Text } from 'react-native'
 // local imports
 import { App, Title } from '~/components'
 import environment from '~/App/environment'
-import CodexDetail from './CodexDetail'
+import Content from './CodexDetail'
 
-const CodexDetail = () => (
+const CodexDetail = ({ match }) => (
     <QueryRenderer
         environment={environment}
         query={graphql`
@@ -19,6 +19,7 @@ const CodexDetail = () => (
                 }
             }
         `}
+        variables={match.params}
         render={({ error, props }) => {
             // if there was an error
             if (error) {
@@ -37,7 +38,9 @@ const CodexDetail = () => (
             }
 
             // render the detail view
-            return <CodexDetail codex={props.node} />
+            return <Content codex={props.node} />
         }}
     />
 )
+
+export default CodexDetail

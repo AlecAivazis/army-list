@@ -1,5 +1,5 @@
 export Title from './Title'
 export Icon from './Icon'
 export ButtonLink from './ButtonLink'
-export ArmyAvatar from './ArmyAvatar'
+export CodexAvatar from './CodexAvatar'
 export * from './layout'

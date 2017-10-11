@@ -1,6 +1,6 @@
 // external imports
 import React from 'react'
-import { Text } from 'react-relay'
+import { Text } from 'react-native'
 import { createFragmentContainer, graphql } from 'react-relay'
 // internal imports
 import { App } from '~/components'

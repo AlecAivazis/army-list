@@ -10,7 +10,7 @@ import styles from './styles'
 
 const CodexCard = ({ codex, style, ...unused }) => (
     <Card style={[styles.container, style]}>
-        <ButtonLink style={styles.content} to={`/manage/codices/${codex.id}`}>
+        <ButtonLink style={styles.content} to={`/codex/${codex.id}`}>
             <CodexAvatar codex={codex} />
             <Text style={styles.title}>{codex.name}</Text>
         </ButtonLink>

@@ -1,3 +1,4 @@
 export ArmyList from './ArmyList'
 export ArmyDetail from './ArmyDetail'
-export ManageData from './ManageData'
+export CodexDetail from './CodexDetail'
+export CodexList from './CodexList'

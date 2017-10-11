@@ -1,4 +1,5 @@
 // external imports
+import React from 'react'
 import { Image, Text } from 'react-native'
 import { createFragmentContainer, graphql } from 'react-relay'
 
@@ -10,7 +11,7 @@ const CodexAvatar = ({ codex }) =>
     )
 
 export default createFragmentContainer(
-    codexAvatar,
+    CodexAvatar,
     graphql`
         fragment CodexAvatar_codex on Codex {
             avatar {

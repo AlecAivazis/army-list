@@ -47,7 +47,7 @@ export default ({ history }) => (
                         <ButtonLink to="/newArmy" key="add">
                             Add Army
                         </ButtonLink>,
-                        <ButtonLink to="/manage" key="manage">
+                        <ButtonLink to="/codex" key="manage">
                             Manage Data
                         </ButtonLink>
                     ]}
