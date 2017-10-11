@@ -1,5 +1,5 @@
 # source: https://api.graph.cool/relay/v1/bougatsa-battle-tome
-# timestamp: Tue Oct 10 2017 00:07:11 GMT-0700 (PDT)
+# timestamp: Tue Oct 10 2017 21:10:32 GMT-0700 (PDT)
 
 input AddToArmyDetachmentOnDetachmentArmyDetachmentInput {
   kindDetachmentId: ID!
@@ -59,6 +59,21 @@ type AddToArmyUnitOnUnitPayload {
   unitUnit: Unit
   inArmyUnitsArmyDetachmentUnitEdge: ArmyDetachmentUnitEdge
   unitUnitEdge: UnitEdge
+}
+
+input AddToCodexOnFileCodexInput {
+  avatarFileId: ID!
+  codicesCodexId: ID!
+  clientMutationId: String!
+}
+
+type AddToCodexOnFilePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  codicesCodex: Codex
+  avatarFile: File
+  codicesCodexEdge: CodexEdge
+  avatarFileEdge: FileEdge
 }
 
 input AddToDetachmentOnDetachmentUnitDetachmentInput {
@@ -520,9 +535,16 @@ enum ArmyOrderBy {
 }
 
 type Codex implements Node {
+  avatar(filter: FileFilter): File
   id: ID!
   models(filter: ModelFilter, orderBy: ModelOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ModelConnection
   name: String!
+}
+
+input CodexavatarFile {
+  name: String!
+  codicesIds: [ID!]
+  codices: [FilecodicesCodex!]
 }
 
 # A connection to a list of items.
@@ -632,6 +654,7 @@ input CodexFilter {
 
   # All values not ending with the given string.
   name_not_ends_with: String
+  avatar: FileFilter
   models_every: ModelFilter
   models_some: ModelFilter
   models_none: ModelFilter
@@ -740,12 +763,16 @@ type CreateArmyPayload {
 
 input CreateCodex {
   name: String!
+  avatarId: ID
+  avatar: CodexavatarFile
   modelsIds: [ID!]
   models: [CodexmodelsModel!]
 }
 
 input CreateCodexInput {
   name: String!
+  avatarId: ID
+  avatar: CodexavatarFile
   modelsIds: [ID!]
   models: [CodexmodelsModel!]
   clientMutationId: String!
@@ -756,6 +783,7 @@ type CreateCodexPayload {
   clientMutationId: String!
   codex: Codex
   edge: CodexEdge
+  avatar: File
 }
 
 input CreateDetachment {
@@ -812,10 +840,14 @@ type CreateDetachmentUnitPayload {
 
 input CreateFile {
   name: String!
+  codicesIds: [ID!]
+  codices: [FilecodicesCodex!]
 }
 
 input CreateFileInput {
   name: String!
+  codicesIds: [ID!]
+  codices: [FilecodicesCodex!]
   clientMutationId: String!
 }
 
@@ -1048,6 +1080,7 @@ type DeleteCodexPayload {
   clientMutationId: String!
   codex: Codex
   edge: CodexEdge
+  avatar: File
   deletedId: ID
 }
 
@@ -1497,6 +1530,7 @@ enum DetachmentUnitOrderBy {
 }
 
 type File implements Node {
+  codices(filter: CodexFilter, orderBy: CodexOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): CodexConnection
   contentType: String!
   createdAt: DateTime!
   id: ID!
@@ -1505,6 +1539,12 @@ type File implements Node {
   size: Int!
   updatedAt: DateTime!
   url: String!
+}
+
+input FilecodicesCodex {
+  name: String!
+  modelsIds: [ID!]
+  models: [CodexmodelsModel!]
 }
 
 # A connection to a list of items.
@@ -1800,6 +1840,9 @@ input FileFilter {
 
   # All values not ending with the given string.
   url_not_ends_with: String
+  codices_every: CodexFilter
+  codices_some: CodexFilter
+  codices_none: CodexFilter
 }
 
 enum FileOrderBy {
@@ -2022,6 +2065,8 @@ input ModelarmyUnitsArmyDetachmentUnit {
 
 input ModelcodexCodex {
   name: String!
+  avatarId: ID
+  avatar: CodexavatarFile
   modelsIds: [ID!]
   models: [CodexmodelsModel!]
 }
@@ -2590,6 +2635,7 @@ type Mutation {
   addToArmyOnArmyDetachment(input: AddToArmyOnArmyDetachmentArmyInput!): AddToArmyOnArmyDetachmentPayload
   addToArmyUnitOnModel(input: AddToArmyUnitOnModelArmyDetachmentUnitInput!): AddToArmyUnitOnModelPayload
   addToArmyUnitOnUnit(input: AddToArmyUnitOnUnitArmyDetachmentUnitInput!): AddToArmyUnitOnUnitPayload
+  addToCodexOnFile(input: AddToCodexOnFileCodexInput!): AddToCodexOnFilePayload
   addToDetachmentOnDetachmentUnit(input: AddToDetachmentOnDetachmentUnitDetachmentInput!): AddToDetachmentOnDetachmentUnitPayload
   addToEquipmentOnModel(input: AddToEquipmentOnModelModelInput!): AddToEquipmentOnModelPayload
   addToItemsOnWargear(input: AddToItemsOnWargearWargearOptionInput!): AddToItemsOnWargearPayload
@@ -2601,6 +2647,7 @@ type Mutation {
   removeFromArmyOnArmyDetachment(input: RemoveFromArmyOnArmyDetachmentArmyInput!): RemoveFromArmyOnArmyDetachmentPayload
   removeFromArmyUnitOnModel(input: RemoveFromArmyUnitOnModelArmyDetachmentUnitInput!): RemoveFromArmyUnitOnModelPayload
   removeFromArmyUnitOnUnit(input: RemoveFromArmyUnitOnUnitArmyDetachmentUnitInput!): RemoveFromArmyUnitOnUnitPayload
+  removeFromCodexOnFile(input: RemoveFromCodexOnFileCodexInput!): RemoveFromCodexOnFilePayload
   removeFromDetachmentOnDetachmentUnit(input: RemoveFromDetachmentOnDetachmentUnitDetachmentInput!): RemoveFromDetachmentOnDetachmentUnitPayload
   removeFromEquipmentOnModel(input: RemoveFromEquipmentOnModelModelInput!): RemoveFromEquipmentOnModelPayload
   removeFromItemsOnWargear(input: RemoveFromItemsOnWargearWargearOptionInput!): RemoveFromItemsOnWargearPayload
@@ -2698,6 +2745,21 @@ type RemoveFromArmyUnitOnUnitPayload {
   unitUnit: Unit
   inArmyUnitsArmyDetachmentUnitEdge: ArmyDetachmentUnitEdge
   unitUnitEdge: UnitEdge
+}
+
+input RemoveFromCodexOnFileCodexInput {
+  avatarFileId: ID!
+  codicesCodexId: ID!
+  clientMutationId: String!
+}
+
+type RemoveFromCodexOnFilePayload {
+  viewer: Viewer!
+  clientMutationId: String!
+  codicesCodex: Codex
+  avatarFile: File
+  codicesCodexEdge: CodexEdge
+  avatarFileEdge: FileEdge
 }
 
 input RemoveFromDetachmentOnDetachmentUnitDetachmentInput {
@@ -3185,6 +3247,8 @@ type UpdateArmyPayload {
 input UpdateCodex {
   id: ID!
   name: String
+  avatarId: ID
+  avatar: CodexavatarFile
   modelsIds: [ID!]
   models: [CodexmodelsModel!]
 }
@@ -3192,6 +3256,8 @@ input UpdateCodex {
 input UpdateCodexInput {
   id: ID!
   name: String
+  avatarId: ID
+  avatar: CodexavatarFile
   modelsIds: [ID!]
   models: [CodexmodelsModel!]
   clientMutationId: String!
@@ -3202,6 +3268,7 @@ type UpdateCodexPayload {
   clientMutationId: String!
   codex: Codex
   edge: CodexEdge
+  avatar: File
 }
 
 input UpdateDetachment {
@@ -3263,11 +3330,15 @@ type UpdateDetachmentUnitPayload {
 input UpdateFile {
   id: ID!
   name: String
+  codicesIds: [ID!]
+  codices: [FilecodicesCodex!]
 }
 
 input UpdateFileInput {
   id: ID!
   name: String
+  codicesIds: [ID!]
+  codices: [FilecodicesCodex!]
   clientMutationId: String!
 }
 
@@ -3427,6 +3498,7 @@ type UpdateOrCreateCodexPayload {
   clientMutationId: String!
   codex: Codex
   edge: CodexEdge
+  avatar: File
 }
 
 input UpdateOrCreateDetachmentInput {

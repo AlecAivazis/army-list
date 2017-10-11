@@ -1,17 +1,30 @@
 // external imports
 import React from 'react'
-import { View } from 'react-native'
+import { View, ScrollView } from 'react-native'
 import { createFragmentContainer, graphql } from 'react-relay'
 // local imports
 import { CardGrid } from '~/quark'
 import CodexCard from './CodexCard'
+import styles from './styles'
 
 const CodexList = ({ viewer: { codices } }) => (
-    <CardGrid>
+    <ScrollView style={styles.container}>
         {codices.edges.map(({ node: codex }, i) => (
             <CodexCard codex={codex} key={i} />
         ))}
-    </CardGrid>
+        {codices.edges.map(({ node: codex }, i) => (
+            <CodexCard codex={codex} key={i} />
+        ))}
+        {codices.edges.map(({ node: codex }, i) => (
+            <CodexCard codex={codex} key={i} />
+        ))}
+        {codices.edges.map(({ node: codex }, i) => (
+            <CodexCard codex={codex} key={i} />
+        ))}
+        {codices.edges.map(({ node: codex }, i) => (
+            <CodexCard codex={codex} key={i} />
+        ))}
+    </ScrollView>
 )
 
 export default createFragmentContainer(

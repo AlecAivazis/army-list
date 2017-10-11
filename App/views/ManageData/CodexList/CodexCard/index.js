@@ -5,11 +5,15 @@ import { Card } from 'quark-native'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { Link } from 'react-router-native'
 // local imports
+import { ButtonLink, CodexAvatar } from '~/components'
 import styles from './styles'
 
 const CodexCard = ({ codex, style, ...unused }) => (
     <Card style={[styles.container, style]}>
-        <Text>{codex.name}</Text>
+        <ButtonLink style={styles.content} to={`/manage/codices/${codex.id}`}>
+            <CodexAvatar codex={codex} />
+            <Text style={styles.title}>{codex.name}</Text>
+        </ButtonLink>
     </Card>
 )
 
@@ -17,8 +21,8 @@ export default createFragmentContainer(
     CodexCard,
     graphql`
         fragment CodexCard_codex on Codex {
-            name
             id
+            ...CodexAvatar_codex
         }
     `
 )
