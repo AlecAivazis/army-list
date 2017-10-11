@@ -1,3 +1,4 @@
 export * from './card'
 export * from './navigation'
 export Loader from './Loader'
+export * from './tabs'

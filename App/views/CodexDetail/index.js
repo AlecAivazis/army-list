@@ -14,6 +14,7 @@ const CodexDetail = ({ match }) => (
             query CodexDetailQuery($id: ID!) {
                 node(id: $id) {
                     ... on Codex {
+                        name
                         ...CodexDetail_codex
                     }
                 }
@@ -29,7 +30,7 @@ const CodexDetail = ({ match }) => (
             // if we are still loading
             if (!props) {
                 return (
-                    <App>
+                    <App header={<Title>loading</Title>}>
                         <View>
                             <Text>loading...</Text>
                         </View>
