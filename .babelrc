@@ -1,13 +1,15 @@
 {
   "presets": [
-    "babel-preset-expo"
+    "babel-preset-expo",
+    "stage-0"
   ],
   "env": {
     "development": {
       "plugins": [
         "transform-react-jsx-source",
         "root-import",
-        "relay"
+        "relay",
+        "transform-es2015-modules-commonjs"
       ]
     }
   }

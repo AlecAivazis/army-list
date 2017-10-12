@@ -49,9 +49,9 @@ const CodexModelSummary = ({ models }) => (
         </TableHeader>
         <ScrollView>
             <View style={{ flex: 1 }}>
-                {models.edges.map(({ node }) => (
+                {models.edges.map(({ node: model }) => (
                     <TableRow>
-                        <NameCell>{node.name}</NameCell>
+                        <NameCell>{model.name}</NameCell>
                         <Cell>{model.pointCost}</Cell>
                         <Cell>{model.powerLevel}</Cell>
                         <Cell>{model.movement}"</Cell>

@@ -1,5 +1,6 @@
 // external imports
 import { StyleSheet } from 'react-native'
+import { grey4, grey5 } from 'quark-native/styles'
 
 export default StyleSheet.create({
     container: {
