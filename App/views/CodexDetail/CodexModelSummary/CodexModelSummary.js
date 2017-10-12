@@ -50,7 +50,7 @@ const CodexModelSummary = ({ models }) => (
         <ScrollView>
             <View style={{ flex: 1 }}>
                 {models.edges.map(({ node: model }) => (
-                    <TableRow>
+                    <TableRow key={model.id}>
                         <NameCell>{model.name}</NameCell>
                         <Cell>{model.pointCost}</Cell>
                         <Cell>{model.powerLevel}</Cell>
@@ -76,6 +76,7 @@ export default createFragmentContainer(
         fragment CodexModelSummary_models on ModelConnection {
             edges {
                 node {
+                    id
                     name
                     pointCost
                     powerLevel
