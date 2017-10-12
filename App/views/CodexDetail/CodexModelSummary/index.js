@@ -1,7 +1,27 @@
 // external imports
 import React from 'react'
-import { Text } from 'react-native'
+import { Text, View } from 'react-native'
+import { createFragmentContainer, graphql } from 'react-relay'
+// local imports
+import styles from './styles'
+import Header from './CodexModelSummaryHeader'
+import Content from './CodexModelSummary'
 
-const CodexModelSummary = () => <Text>models</Text>
+const CodexModelSummary = ({ codex }) => (
+    <View style={styles.container}>
+        <Header />
+        <Content models={codex.models} />
+    </View>
+)
 
-export default CodexModelSummary
+export default createFragmentContainer(
+    CodexModelSummary,
+    graphql`
+        fragment CodexModelSummary_codex on Codex {
+            name
+            models {
+                ...CodexModelSummary_models
+            }
+        }
+    `
+)

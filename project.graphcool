@@ -1,5 +1,5 @@
 # source: https://api.graph.cool/relay/v1/bougatsa-battle-tome
-# timestamp: Tue Oct 10 2017 21:10:32 GMT-0700 (PDT)
+# timestamp: Wed Oct 11 2017 18:17:34 GMT-0700 (PDT)
 
 input AddToArmyDetachmentOnDetachmentArmyDetachmentInput {
   kindDetachmentId: ID!
@@ -389,13 +389,14 @@ input ArmyDetachmentUnitmodelsModel {
   armorSave: Int!
   attacks: Int!
   ballisticSkill: String!
-  factions: [String!]!
+  factions: [String!]
   invulnerableSave: Int!
-  keywords: [String!]!
+  keywords: [String!]
   leadership: Int!
   movement: String!
+  name: String!
   pointCost: Int!
-  powerLevelCost: Int!
+  powerLevel: Int!
   strength: String!
   toughness: String!
   type: UnitType!
@@ -664,13 +665,14 @@ input CodexmodelsModel {
   armorSave: Int!
   attacks: Int!
   ballisticSkill: String!
-  factions: [String!]!
+  factions: [String!]
   invulnerableSave: Int!
-  keywords: [String!]!
+  keywords: [String!]
   leadership: Int!
   movement: String!
+  name: String!
   pointCost: Int!
-  powerLevelCost: Int!
+  powerLevel: Int!
   strength: String!
   toughness: String!
   type: UnitType!
@@ -886,13 +888,14 @@ input CreateModel {
   armorSave: Int!
   attacks: Int!
   ballisticSkill: String!
-  factions: [String!]!
+  factions: [String!]
   invulnerableSave: Int!
-  keywords: [String!]!
+  keywords: [String!]
   leadership: Int!
   movement: String!
+  name: String!
   pointCost: Int!
-  powerLevelCost: Int!
+  powerLevel: Int!
   strength: String!
   toughness: String!
   type: UnitType!
@@ -916,13 +919,14 @@ input CreateModelInput {
   armorSave: Int!
   attacks: Int!
   ballisticSkill: String!
-  factions: [String!]!
+  factions: [String!]
   invulnerableSave: Int!
-  keywords: [String!]!
+  keywords: [String!]
   leadership: Int!
   movement: String!
+  name: String!
   pointCost: Int!
-  powerLevelCost: Int!
+  powerLevel: Int!
   strength: String!
   toughness: String!
   type: UnitType!
@@ -1896,13 +1900,14 @@ input ItemequipableModelsModel {
   armorSave: Int!
   attacks: Int!
   ballisticSkill: String!
-  factions: [String!]!
+  factions: [String!]
   invulnerableSave: Int!
-  keywords: [String!]!
+  keywords: [String!]
   leadership: Int!
   movement: String!
+  name: String!
   pointCost: Int!
-  powerLevelCost: Int!
+  powerLevel: Int!
   strength: String!
   toughness: String!
   type: UnitType!
@@ -2038,15 +2043,16 @@ type Model implements Node {
   ballisticSkill: String!
   codex(filter: CodexFilter): Codex!
   equipment(filter: ItemFilter, orderBy: ItemOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): ItemConnection
-  factions: [String!]!
+  factions: [String!]
   id: ID!
   inUnits(filter: UnitFilter, orderBy: UnitOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): UnitConnection
   invulnerableSave: Int!
-  keywords: [String!]!
+  keywords: [String!]
   leadership: Int!
   movement: String!
+  name: String!
   pointCost: Int!
-  powerLevelCost: Int!
+  powerLevel: Int!
   specialRules(filter: SpecialRuleFilter, orderBy: SpecialRuleOrderBy, skip: Int, after: String, before: String, first: Int, last: Int): SpecialRuleConnection
   strength: String!
   toughness: String!
@@ -2314,6 +2320,46 @@ input ModelFilter {
 
   # All values not ending with the given string.
   movement_not_ends_with: String
+  name: String
+
+  # All values that are not equal to given value.
+  name_not: String
+
+  # All values that are contained in given list.
+  name_in: [String!]
+
+  # All values that are not contained in given list.
+  name_not_in: [String!]
+
+  # All values less than the given value.
+  name_lt: String
+
+  # All values less than or equal the given value.
+  name_lte: String
+
+  # All values greater than the given value.
+  name_gt: String
+
+  # All values greater than or equal the given value.
+  name_gte: String
+
+  # All values containing the given string.
+  name_contains: String
+
+  # All values not containing the given string.
+  name_not_contains: String
+
+  # All values starting with the given string.
+  name_starts_with: String
+
+  # All values not starting with the given string.
+  name_not_starts_with: String
+
+  # All values ending with the given string.
+  name_ends_with: String
+
+  # All values not ending with the given string.
+  name_not_ends_with: String
   pointCost: Int
 
   # All values that are not equal to given value.
@@ -2336,28 +2382,28 @@ input ModelFilter {
 
   # All values greater than or equal the given value.
   pointCost_gte: Int
-  powerLevelCost: Int
+  powerLevel: Int
 
   # All values that are not equal to given value.
-  powerLevelCost_not: Int
+  powerLevel_not: Int
 
   # All values that are contained in given list.
-  powerLevelCost_in: [Int!]
+  powerLevel_in: [Int!]
 
   # All values that are not contained in given list.
-  powerLevelCost_not_in: [Int!]
+  powerLevel_not_in: [Int!]
 
   # All values less than the given value.
-  powerLevelCost_lt: Int
+  powerLevel_lt: Int
 
   # All values less than or equal the given value.
-  powerLevelCost_lte: Int
+  powerLevel_lte: Int
 
   # All values greater than the given value.
-  powerLevelCost_gt: Int
+  powerLevel_gt: Int
 
   # All values greater than or equal the given value.
-  powerLevelCost_gte: Int
+  powerLevel_gte: Int
   strength: String
 
   # All values that are not equal to given value.
@@ -2550,10 +2596,12 @@ enum ModelOrderBy {
   leadership_DESC
   movement_ASC
   movement_DESC
+  name_ASC
+  name_DESC
   pointCost_ASC
   pointCost_DESC
-  powerLevelCost_ASC
-  powerLevelCost_DESC
+  powerLevel_ASC
+  powerLevel_DESC
   strength_ASC
   strength_DESC
   toughness_ASC
@@ -3013,13 +3061,14 @@ input SpecialRuleposessedByModel {
   armorSave: Int!
   attacks: Int!
   ballisticSkill: String!
-  factions: [String!]!
+  factions: [String!]
   invulnerableSave: Int!
-  keywords: [String!]!
+  keywords: [String!]
   leadership: Int!
   movement: String!
+  name: String!
   pointCost: Int!
-  powerLevelCost: Int!
+  powerLevel: Int!
   strength: String!
   toughness: String!
   type: UnitType!
@@ -3129,13 +3178,14 @@ input UnitmodelsModel {
   armorSave: Int!
   attacks: Int!
   ballisticSkill: String!
-  factions: [String!]!
+  factions: [String!]
   invulnerableSave: Int!
-  keywords: [String!]!
+  keywords: [String!]
   leadership: Int!
   movement: String!
+  name: String!
   pointCost: Int!
-  powerLevelCost: Int!
+  powerLevel: Int!
   strength: String!
   toughness: String!
   type: UnitType!
@@ -3385,8 +3435,9 @@ input UpdateModel {
   keywords: [String!]
   leadership: Int
   movement: String
+  name: String
   pointCost: Int
-  powerLevelCost: Int
+  powerLevel: Int
   strength: String
   toughness: String
   type: UnitType
@@ -3416,8 +3467,9 @@ input UpdateModelInput {
   keywords: [String!]
   leadership: Int
   movement: String
+  name: String
   pointCost: Int
-  powerLevelCost: Int
+  powerLevel: Int
   strength: String
   toughness: String
   type: UnitType
@@ -3984,13 +4036,14 @@ input WargearOptionmodelModel {
   armorSave: Int!
   attacks: Int!
   ballisticSkill: String!
-  factions: [String!]!
+  factions: [String!]
   invulnerableSave: Int!
-  keywords: [String!]!
+  keywords: [String!]
   leadership: Int!
   movement: String!
+  name: String!
   pointCost: Int!
-  powerLevelCost: Int!
+  powerLevel: Int!
   strength: String!
   toughness: String!
   type: UnitType!

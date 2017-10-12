@@ -21,5 +21,8 @@ export default StyleSheet.create({
     },
     title: {
         fontSize: 20
+    },
+    avatar: {
+        marginRight: 12
     }
 })

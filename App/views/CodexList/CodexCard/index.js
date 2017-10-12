@@ -22,6 +22,7 @@ export default createFragmentContainer(
     graphql`
         fragment CodexCard_codex on Codex {
             id
+            name
             ...CodexAvatar_codex
         }
     `

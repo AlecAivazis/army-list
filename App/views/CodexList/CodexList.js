@@ -12,18 +12,6 @@ const CodexList = ({ viewer: { codices } }) => (
         {codices.edges.map(({ node: codex }, i) => (
             <CodexCard codex={codex} key={i} />
         ))}
-        {codices.edges.map(({ node: codex }, i) => (
-            <CodexCard codex={codex} key={i} />
-        ))}
-        {codices.edges.map(({ node: codex }, i) => (
-            <CodexCard codex={codex} key={i} />
-        ))}
-        {codices.edges.map(({ node: codex }, i) => (
-            <CodexCard codex={codex} key={i} />
-        ))}
-        {codices.edges.map(({ node: codex }, i) => (
-            <CodexCard codex={codex} key={i} />
-        ))}
     </ScrollView>
 )
 

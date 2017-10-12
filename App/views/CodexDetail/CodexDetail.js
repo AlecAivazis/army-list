@@ -2,7 +2,7 @@
 import React from 'react'
 import { Text } from 'react-native'
 import { createFragmentContainer, graphql } from 'react-relay'
-import { TabView } from '~/quark'
+import { TabView } from 'quark-native'
 // internal imports
 import styles from './styles'
 import { App, Title } from '~/components'
@@ -35,6 +35,7 @@ export default createFragmentContainer(
         fragment CodexDetail_codex on Codex {
             name
             id
+            ...CodexModelSummary_codex
         }
     `
 )

@@ -1,0 +1,1 @@
+export CodexAvatar from './CodexAvatar'

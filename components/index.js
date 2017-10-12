@@ -1,5 +1,6 @@
 export Title from './Title'
 export Icon from './Icon'
 export ButtonLink from './ButtonLink'
-export CodexAvatar from './CodexAvatar'
+export * from './codex'
 export * from './layout'
+export * from './models'
