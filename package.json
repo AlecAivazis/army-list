@@ -31,6 +31,8 @@
     "babel-plugin-relay": "^1.4.1",
     "babel-plugin-root-import": "^5.1.0",
     "expo": "^21.0.0",
+    "git-hooks": "^1.1.8",
+    "prettier": "^1.7.4",
     "quark-native": "^0.0.9-beta.17",
     "react": "16.0.0-alpha.12",
     "react-native": "^0.48.4",

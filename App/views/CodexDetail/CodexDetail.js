@@ -15,7 +15,7 @@ const CodexDetail = ({ codex }) => {
     const tabs = {
         Models: <ModelSummary codex={codex} />,
         'Special Rules': <SpecialRuleSummary codex={codex} />,
-        Wargear: <Wargear codex={codex} />,
+        Wargear: <Wargear codex={codex} />
     }
 
     return (
