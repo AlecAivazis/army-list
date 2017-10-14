@@ -7,7 +7,6 @@ import { TabView } from 'quark-native'
 import styles from './styles'
 import { App, Title } from '~/components'
 import ModelSummary from './CodexModelSummary'
-import Options from './CodexOptions'
 import SpecialRuleSummary from './CodexSpecialRuleSummary'
 import Wargear from './CodexWargearSummary'
 
@@ -17,7 +16,6 @@ const CodexDetail = ({ codex }) => {
         Models: <ModelSummary codex={codex} />,
         'Special Rules': <SpecialRuleSummary codex={codex} />,
         Wargear: <Wargear codex={codex} />,
-        'More Options': <Options codex={codex} />
     }
 
     return (

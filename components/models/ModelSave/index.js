@@ -9,14 +9,13 @@ const ModelSave = ({ model }) => {
     const invuln = `${model.invulnerableSave}++`
 
     // compute X+/Y++ given the data we have
-    const body = do {
-        if (model.armorSave && model.invulnerableSave) {
-            ;`${armorSave}/${invuln}`
-        } else if (model.armorSave) {
-            armorSave
-        } else {
-            invuln
-        }
+    let body
+    if (model.armorSave && model.invulnerableSave) {
+        body = `${armorSave}/${invuln}`
+    } else if (model.armorSave) {
+        body = armorSave
+    } else {
+        body = invuln
     }
 
     return <Text>{body}</Text>

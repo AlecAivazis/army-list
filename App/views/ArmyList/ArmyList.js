@@ -4,7 +4,6 @@ import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import { createFragmentContainer, graphql } from 'react-relay'
 import { ZoomViewContainer, CardGrid } from '~/quark'
-import { WhitePortal } from 'react-native-portal'
 import { Redirect } from 'react-router-native'
 // local imports
 import ArmyCard from './ArmyCard'
