@@ -4,11 +4,11 @@ import { grey4, grey5 } from 'quark-native/styles'
 
 export default StyleSheet.create({
     container: {
-        flex: 1,
-        padding: 20
+        flex: 1
     },
     content: {
-        flex: 1
+        flex: 1,
+        padding: 20
     },
     nameCell: {
         flex: 4,

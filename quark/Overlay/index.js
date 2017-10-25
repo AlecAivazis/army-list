@@ -1,29 +1,24 @@
 // external imports
 import React from 'react'
 import { Modal, TouchableWithoutFeedback, View } from 'react-native'
+import { Card } from 'quark-native'
+// local imports
+import styles from './styles'
 
-const Overlay = ({ toggle, children }) => (
-    <Modal>
-        {/* the click away */}
-        <TouchableWithoutFeedback onPress={toggle}>
-            <View style={{ backgroundColor: 'red', flex: 1 }}>
-                <View
-                    style={{
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
-                        marginTop: 50,
-                        width: 400,
-                        height: 500,
-                        backgroundColor: 'white'
-                    }}
-                >
-                    <TouchableWithoutFeedback>
-                        <View style={{ flex: 1 }}>{children}</View>
-                    </TouchableWithoutFeedback>
+const Overlay = ({ toggle, children, visible }) =>
+    visible && (
+        <Modal transparent={true}>
+            {/* the click away */}
+            <TouchableWithoutFeedback onPress={toggle}>
+                <View style={styles.background}>
+                    <Card style={styles.content}>
+                        <TouchableWithoutFeedback>
+                            <View style={{ flex: 1 }}>{children}</View>
+                        </TouchableWithoutFeedback>
+                    </Card>
                 </View>
-            </View>
-        </TouchableWithoutFeedback>
-    </Modal>
-)
+            </TouchableWithoutFeedback>
+        </Modal>
+    )
 
 export default Overlay

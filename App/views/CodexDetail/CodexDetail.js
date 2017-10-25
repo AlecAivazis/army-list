@@ -13,14 +13,18 @@ import Wargear from './CodexWargearSummary'
 const CodexDetail = ({ codex }) => {
     // a mapping of names of views to the component to mount
     const tabs = {
-        Models: <ModelSummary codex={codex} />,
+        Units: <ModelSummary codex={codex} />,
         'Special Rules': <SpecialRuleSummary codex={codex} />,
         Wargear: <Wargear codex={codex} />
     }
 
     return (
         <App header={<Title>{codex.name}</Title>}>
-            <TabView data={Object.keys(tabs).map(key => ({ key }))}>
+            <TabView
+                data={Object.keys(tabs).map(key => ({ key }))}
+                barStyle={styles.tabBar}
+                tabStyle={styles.tab}
+            >
                 {({ key }) => tabs[key]}
             </TabView>
         </App>
